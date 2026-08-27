@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "task": "synthesizability",
+  "dataset_blind": true,
+  "discovery_model": "gpt-4.1-mini-2025-04-14",
+  "embedding_model": "text-embedding-3-large",
+  "consolidation_model": "gpt-5",
+  "code_generation_model": "gpt-4.1-2025-04-14",
+  "discovery_calls": 1000,
+  "rules_per_call": 10,
+  "clusters": 50,
+  "pca_dimensions": 256,
+  "kmeans_n_init": 50,
+  "kmeans_max_iter": 1000,
+  "random_seed": 42,
+  "embedding_batch_size": 128,
+  "workers": 5,
+  "discovery_temperature": null,
+  "consolidation_temperature": 0,
+  "code_generation_temperature": 0,
+  "max_cluster_prompt_rules": 2000
+}
