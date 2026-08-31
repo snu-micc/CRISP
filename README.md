@@ -108,11 +108,7 @@ Raw run directories are ignored by Git by default. Preserve them privately if th
 
 ## Citation
 
-The manuscript citation will be added after publication. Until then, please cite this repository and include the commit hash and configuration used for your run.
-
-## Use and disclosure
-
-This repository is provided for scholarly review and protocol reproduction. No frozen featurizer, trained predictor, benchmark data, or performance claims are distributed here. License terms are pending institutional review; see [NOTICE.md](NOTICE.md) before reuse or redistribution.
+The manuscript citation will be added after publication. Until then, please cite this repository and the preprint https://arxiv.org/abs/2608.27587.
 
 ## Contact
 
