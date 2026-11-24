@@ -1,6 +1,18 @@
-# CRISP
+<div align="center">
+  <img src="assets/crisp-mark.svg" width="112" alt="CRISP mark">
+  <h1>CRISP</h1>
+  <p><strong>Compiling chemical knowledge into executable descriptors for materials prediction</strong></p>
+  <p>
+    <img alt="Python 3.11+" src="https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white">
+    <img alt="OpenAI API" src="https://img.shields.io/badge/OpenAI_API-rule_compilation-111827">
+    <img alt="Qwen descriptors" src="https://img.shields.io/badge/Qwen_descriptors-50_%2B_25-2A9D8F">
+    <img alt="Data" src="https://img.shields.io/badge/benchmark_data-not_included-E9C46A">
+  </p>
+</div>
 
-Chemical rule catalogs and predictors for inorganic crystals.
+CRISP is an LLM-assisted workflow for turning target-relevant chemical knowledge into compact, inspectable programs. The LLM explores and organizes chemical rules, then compiles each retained rule into a scalar descriptor. A conventional learner—not the LLM—consumes the resulting descriptor vector.
+
+No task-specific LLM fine-tuning or large-corpus training is required: representation construction is performed through auditable API calls, and the resulting descriptor code can be inspected independently of the language model.
 
 [![Five stages of the CRISP workflow, from chemical rule generation to materials prediction](assets/crisp-workflow.png)](assets/crisp-workflow.png)
 
