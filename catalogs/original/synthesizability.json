@@ -1,0 +1,402 @@
+[
+  {
+    "rule": "R01",
+    "name": "Thermodynamic Stability",
+    "definition": "Energy above the convex hull retrieved from Materials Project metadata.",
+    "function": "rule_01_thermodynamic_stability",
+    "column": "rule_01_thermodynamic_stability",
+    "rule_text": "Reasons citing low or negative formation energy, or low energy above the convex hull, as indicators of a material’s energetic favorability and synthesizability. This includes explicit references to phase stability against decomposition and proximity to the ground state."
+  },
+  {
+    "rule": "R02",
+    "name": "Phonon Stability Proxy",
+    "definition": "Heuristic proxy computed from mean coordination number and density.",
+    "function": "rule_02_phonon_stability_proxy",
+    "column": "rule_02_phonon_stability_proxy",
+    "rule_text": "Reasons referencing the absence of imaginary phonon modes, positive phonon frequencies, or lack of soft vibrational modes as essential for dynamic and vibrational stability, which is necessary for successful synthesis."
+  },
+  {
+    "rule": "R03",
+    "name": "Coordination Environment",
+    "definition": "Mean coordination number estimated using CrystalNN.",
+    "function": "rule_03_avg_coordination_number",
+    "column": "rule_03_avg_coordination_number",
+    "rule_text": "Reasons emphasizing typical, common, or chemically plausible atomic coordination numbers and geometries for constituent atoms, supporting stable bonding and ease of synthesis."
+  },
+  {
+    "rule": "R04",
+    "name": "Space Group Symmetry",
+    "definition": "Crystallographic space group number computed using SpacegroupAnalyzer.",
+    "function": "rule_04_space_group_symmetry",
+    "column": "rule_04_space_group_symmetry",
+    "rule_text": "Reasons highlighting high, common, or simple symmetry and space groups as facilitating easier synthesis, structural stability, and crystallization."
+  },
+  {
+    "rule": "R05",
+    "name": "Packing Density",
+    "definition": "Crystal density computed from the structure.",
+    "function": "rule_05_packing_density",
+    "column": "rule_05_packing_density",
+    "rule_text": "Reasons discussing realistic, moderate, or physically plausible density and efficient atomic packing as supporting structural stability and synthesizability."
+  },
+  {
+    "rule": "R06",
+    "name": "Band Gap (MP)",
+    "definition": "Band gap retrieved from Materials Project metadata.",
+    "function": "rule_06_band_gap",
+    "column": "rule_06_band_gap",
+    "rule_text": "Reasons focusing on appropriate, moderate, or reasonable band gap values and electronic structure (e.g., non-metallic, absence of unstable states) as factors in material stability and synthesis."
+  },
+  {
+    "rule": "R07",
+    "name": "Bond Length/Angle Deviation",
+    "definition": "Deviation of local bond lengths and angles from typical reference values.",
+    "function": "rule_07_bond_length_angle_deviation",
+    "column": "rule_07_bond_length_angle_deviation",
+    "rule_text": "Reasons referencing realistic, typical, or chemically reasonable bond lengths and angles, and the avoidance of highly strained, short, or long bonds, as indicators of structural stability and synthesizability."
+  },
+  {
+    "rule": "R08",
+    "name": "Oxidation State Consistency",
+    "definition": "Bond-valence-based assessment of oxidation-state and charge consistency.",
+    "function": "rule_08_oxidation_state_consistency",
+    "column": "rule_08_oxidation_state_consistency",
+    "rule_text": "Reasons citing the presence of common, stable, or chemically reasonable oxidation states and overall charge neutrality or balanced charge distribution as necessary for stable synthesis."
+  },
+  {
+    "rule": "R09",
+    "name": "Lattice Strain",
+    "definition": "Deviation among lattice parameters as a proxy for lattice distortion or strain.",
+    "function": "rule_09_lattice_strain",
+    "column": "rule_09_lattice_strain",
+    "rule_text": "Reasons mentioning reasonable, moderate, or physically plausible lattice parameters, minimal lattice strain, distortion, or mismatch as beneficial for crystal growth and stability."
+  },
+  {
+    "rule": "R10",
+    "name": "Prototype Similarity Score",
+    "definition": "Structural similarity to known Materials Project structures using structure matching.",
+    "function": "rule_10_prototype_similarity_score",
+    "column": "rule_10_prototype_similarity_score",
+    "rule_text": "Reasons referencing similarity to experimentally realized, database-known, or prototype structures and motifs as increasing the likelihood of successful synthesis."
+  },
+  {
+    "rule": "R11",
+    "name": "Elemental Abundance Score",
+    "definition": "Composition-weighted elemental abundance score based on Clarke abundance.",
+    "function": "rule_11_elemental_abundance_score",
+    "column": "rule_11_elemental_abundance_score",
+    "rule_text": "Reasons emphasizing the use of abundant, non-toxic, non-volatile, and chemically compatible elements, as well as avoidance of rare, hazardous, or highly reactive elements, to improve practical and safe synthesis."
+  },
+  {
+    "rule": "R12",
+    "name": "Volume Per Atom",
+    "definition": "Unit-cell volume divided by the number of atomic sites.",
+    "function": "rule_12_volume_per_atom",
+    "column": "rule_12_volume_per_atom",
+    "rule_text": "Reasons referencing reasonable, moderate, or physically plausible atomic or unit cell volumes as supporting realistic packing and synthesizability."
+  },
+  {
+    "rule": "R13",
+    "name": "Charge Neutrality Deviation",
+    "definition": "Deviation from total charge neutrality estimated from bond-valence analysis.",
+    "function": "rule_13_charge_neutrality_deviation",
+    "column": "rule_13_charge_neutrality_deviation",
+    "rule_text": "Reasons specifically referencing overall charge neutrality or balanced charge distribution as essential for stable synthesis, distinct from general oxidation state balance."
+  },
+  {
+    "rule": "R14",
+    "name": "Bond Valence Sum Deviation",
+    "definition": "Mean deviation between expected and estimated bond valence sums.",
+    "function": "rule_14_bond_valence_sum_deviation",
+    "column": "rule_14_bond_valence_sum_deviation",
+    "rule_text": "Reasons mentioning bond valence sums close to ideal or expected oxidation states as indicators of stable bonding environments and chemical plausibility."
+  },
+  {
+    "rule": "R15",
+    "name": "Max Bond Angle Strain",
+    "definition": "Maximum deviation of local bond angles from idealized coordination angles.",
+    "function": "rule_15_max_bond_angle_strain",
+    "column": "rule_15_max_bond_angle_strain",
+    "rule_text": "Reasons emphasizing the lack of highly strained, short, or long bonds, distorted polyhedra, or unstable/unusual structural motifs as important for stability and synthesis."
+  },
+  {
+    "rule": "R16",
+    "name": "Mechanical Stability Proxy",
+    "definition": "Heuristic proxy based on density normalized by average atomic number.",
+    "function": "rule_16_mechanical_stability_proxy",
+    "column": "rule_16_mechanical_stability_proxy",
+    "rule_text": "Reasons referencing positive, reasonable elastic constants, mechanical robustness, or low internal stress as supporting structural and synthetic stability."
+  },
+  {
+    "rule": "R17",
+    "name": "Elemental Toxicity/Volatility",
+    "definition": "Fraction or weighted contribution of toxic, volatile, or highly reactive elements.",
+    "function": "rule_17_elemental_toxicity_volatility",
+    "column": "rule_17_elemental_toxicity_volatility",
+    "rule_text": "Reasons emphasizing the lack of volatile, toxic, highly reactive, or hazardous elements as improving safety and feasibility of synthesis."
+  },
+  {
+    "rule": "R18",
+    "name": "Synthesis Temperature Estimate",
+    "definition": "Composition-weighted average of elemental melting points.",
+    "function": "rule_18_synthesis_temperature_estimate",
+    "column": "rule_18_synthesis_temperature_estimate",
+    "rule_text": "Reasons referencing compatibility with known or practical synthesis conditions (temperature, pressure, atmosphere) and the absence of extreme or highly unusual synthesis requirements."
+  },
+  {
+    "rule": "R19",
+    "name": "Phase Stability Window",
+    "definition": "Categorical or continuous representation of energy-above-hull stability windows.",
+    "function": "rule_19_phase_stability_window",
+    "column": "rule_19_phase_stability_window",
+    "rule_text": "Reasons specifically referencing low energy above the convex hull or small decomposition energy as evidence for phase stability and synthesizability."
+  },
+  {
+    "rule": "R20",
+    "name": "Atomic Radii Mismatch",
+    "definition": "Standard deviation of atomic radii normalized by their mean.",
+    "function": "rule_20_atomic_radii_mismatch",
+    "column": "rule_20_atomic_radii_mismatch",
+    "rule_text": "Reasons discussing matching or compatible ionic/atomic radii or tolerance factors to minimize lattice strain and promote stable lattice formation."
+  },
+  {
+    "rule": "R21",
+    "name": "Atoms Per Unit Cell",
+    "definition": "Number of atomic sites in the unit cell.",
+    "function": "rule_21_atoms_per_unit_cell",
+    "column": "rule_21_atoms_per_unit_cell",
+    "rule_text": "Reasons stating that moderate unit cell size, low structural complexity, or simple stoichiometry favors easier synthesis and reproducibility."
+  },
+  {
+    "rule": "R22",
+    "name": "Electronegativity Difference",
+    "definition": "Difference between maximum and minimum elemental electronegativity.",
+    "function": "rule_22_electronegativity_difference",
+    "column": "rule_22_electronegativity_difference",
+    "rule_text": "Reasons discussing reasonable or moderate electronegativity differences among constituent elements to ensure stable bonding and phase formation."
+  },
+  {
+    "rule": "R23",
+    "name": "Synthesis Analogue Count",
+    "definition": "Number of known Materials Project entries in the same chemical system.",
+    "function": "rule_23_synthesis_analogue_count",
+    "column": "rule_23_synthesis_analogue_count",
+    "rule_text": "Reasons discussing the presence or absence of stable polymorphs, competing phases, or phase diagram favorability affecting synthesis."
+  },
+  {
+    "rule": "R24",
+    "name": "Fraction Fully Occupied Sites",
+    "definition": "Fraction of crystallographic sites with full occupancy.",
+    "function": "rule_24_fraction_fully_occupied_sites",
+    "column": "rule_24_fraction_fully_occupied_sites",
+    "rule_text": "Reasons stating that fully occupied, ordered atomic sites, low disorder, and low defect formation energy are beneficial for phase purity and synthesis."
+  },
+  {
+    "rule": "R25",
+    "name": "Void Fraction",
+    "definition": "Estimated unoccupied volume fraction from atomic volumes and unit-cell volume.",
+    "function": "rule_25_void_fraction",
+    "column": "rule_25_void_fraction",
+    "rule_text": "Reasons highlighting low or moderate porosity, absence of excessive voids, and realistic packing for mechanical integrity and stability."
+  },
+  {
+    "rule": "R26",
+    "name": "Polyhedral Connectivity",
+    "definition": "Connectivity of coordinated framework cations or local coordination polyhedra.",
+    "function": "rule_26_polyhedral_connectivity",
+    "column": "rule_26_polyhedral_connectivity",
+    "rule_text": "Reasons mentioning well-connected polyhedra, robust network structures, or common connectivity motifs (e.g., corner/edge sharing) as aiding stability and synthesis."
+  },
+  {
+    "rule": "R27",
+    "name": "Absence of Mixed Valence",
+    "definition": "Preference for a single or chemically consistent valence state.",
+    "function": "rule_27_absence_of_mixed_valence",
+    "column": "rule_27_absence_of_mixed_valence",
+    "rule_text": "Reasons focusing on the avoidance of rare, highly unusual, or unstable oxidation or valence states for chemical plausibility and stability."
+  },
+  {
+    "rule": "R28",
+    "name": "Min Interatomic Distance",
+    "definition": "Shortest pairwise interatomic distance in the structure.",
+    "function": "rule_28_min_interatomic_distance",
+    "column": "rule_28_min_interatomic_distance",
+    "rule_text": "Reasons highlighting the avoidance of unphysically short or long interatomic distances, atomic overlaps, or impossible atomic arrangements for structural stability."
+  },
+  {
+    "rule": "R29",
+    "name": "Absence of Unstable Motifs",
+    "definition": "Heuristic score for avoiding rare or unstable local coordination motifs.",
+    "function": "rule_29_absence_unstable_motifs",
+    "column": "rule_29_absence_unstable_motifs",
+    "rule_text": "Reasons stating that rare, unprecedented, or highly unstable structural motifs reduce the likelihood of synthesis, while common motifs favor it."
+  },
+  {
+    "rule": "R30",
+    "name": "Elastic Anisotropy",
+    "definition": "Zener-ratio-like or lattice-anisotropy-based proxy for elastic anisotropy.",
+    "function": "rule_30_elastic_anisotropy",
+    "column": "rule_30_elastic_anisotropy",
+    "rule_text": "Reasons referencing that extreme mechanical properties (e.g., too brittle/soft, negative elastic constants) hinder synthesis, while moderate properties support it."
+  },
+  {
+    "rule": "R31",
+    "name": "Defect Tolerance Indicator",
+    "definition": "Variability in coordination environments as a proxy for defect tolerance.",
+    "function": "rule_31_defect_tolerance_indicator",
+    "column": "rule_31_defect_tolerance_indicator",
+    "rule_text": "Reasons mentioning low defect formation energy, absence of intrinsic defects, or low defect propensity as supporting phase purity and synthesis."
+  },
+  {
+    "rule": "R32",
+    "name": "Max Coordination Number",
+    "definition": "Maximum coordination number among all atomic sites.",
+    "function": "rule_32_max_coordination_number",
+    "column": "rule_32_max_coordination_number",
+    "rule_text": "Reasons noting that highly strained, rare, or unusual coordination environments hinder synthesis, while typical environments support it."
+  },
+  {
+    "rule": "R33",
+    "name": "Unstable Magnetic/Electronic States",
+    "definition": "Heuristic indicator based on partially filled d- or f-orbital configurations.",
+    "function": "rule_33_unstable_magnetic_electronic_states_score",
+    "column": "rule_33_unstable_magnetic_electronic_states_score",
+    "rule_text": "Reasons noting that unfavorable, rare, or unstable magnetic or electronic states complicate synthesis, while simple configurations favor it."
+  },
+  {
+    "rule": "R34",
+    "name": "Absence of Unstable/Volatile Elements",
+    "definition": "Score reflecting avoidance of volatile or chemically unstable elements.",
+    "function": "rule_34_absence_unstable_volatile_elements",
+    "column": "rule_34_absence_unstable_volatile_elements",
+    "rule_text": "Reasons stating that low polymorphic variability and lack of energetically close competing phases reduce synthesis complexity and favor phase purity."
+  },
+  {
+    "rule": "R35",
+    "name": "Lattice Mismatch Minimum",
+    "definition": "Minimum mismatch between the target lattice and known lattice motifs.",
+    "function": "rule_35_lattice_mismatch_min",
+    "column": "rule_35_lattice_mismatch_min",
+    "rule_text": "Reasons highlighting that extremely large or small lattice constants indicate instability, while reasonable parameters support synthesis."
+  },
+  {
+    "rule": "R36",
+    "name": "Polyhedral Distortion Index",
+    "definition": "Bond-length nonuniformity within local coordination polyhedra.",
+    "function": "rule_36_polyhedral_distortion_index",
+    "column": "rule_36_polyhedral_distortion_index",
+    "rule_text": "Reasons noting that unusual or disconnected polyhedral networks hinder synthesis, while robust connectivity supports it."
+  },
+  {
+    "rule": "R37",
+    "name": "Dimensional Anisotropy",
+    "definition": "Ratio or spread of lattice parameters, such as maximum divided by minimum lattice length.",
+    "function": "rule_37_dimensional_anisotropy",
+    "column": "rule_37_dimensional_anisotropy",
+    "rule_text": "Reasons referencing known stable dimensional motifs (e.g., 2D, 3D) as supporting synthesis, and avoidance of extreme low- or high-dimensional structures."
+  },
+  {
+    "rule": "R38",
+    "name": "Min Site Occupancy",
+    "definition": "Lowest site occupancy value in the crystal structure.",
+    "function": "rule_38_min_site_occupancy",
+    "column": "rule_38_min_site_occupancy",
+    "rule_text": "Reasons highlighting the avoidance of extremely short or long bonds or angles for stability, and the presence of typical values as supporting synthesis."
+  },
+  {
+    "rule": "R39",
+    "name": "Fraction Metallic Bonding",
+    "definition": "Fraction of near-neighbor bonds involving metal–metal pairs.",
+    "function": "rule_39_fraction_metallic_bonding",
+    "column": "rule_39_fraction_metallic_bonding",
+    "rule_text": "Reasons noting that highly unusual band structures (e.g., flat bands, extreme metallicity) complicate synthesis, while typical structures favor it."
+  },
+  {
+    "rule": "R40",
+    "name": "Interlayer Distance Std",
+    "definition": "Standard deviation of interlayer or c-axis neighbor distances.",
+    "function": "rule_40_interlayer_distance_std",
+    "column": "rule_40_interlayer_distance_std",
+    "rule_text": "Reasons referencing that extreme or impractical synthesis conditions (e.g., pressure, temperature, precursor availability) hinder feasibility, while standard conditions favor it."
+  },
+  {
+    "rule": "R41",
+    "name": "Framework Density",
+    "definition": "Number of atoms per unit volume.",
+    "function": "rule_41_framework_density",
+    "column": "rule_41_framework_density",
+    "rule_text": "Reasons referencing the avoidance of highly inefficient or unstable packing as important for structural integrity and synthesis."
+  },
+  {
+    "rule": "R42",
+    "name": "Stoichiometry Deviation",
+    "definition": "Standard deviation or irregularity of the reduced stoichiometric coefficients.",
+    "function": "rule_42_stoichiometry_deviation",
+    "column": "rule_42_stoichiometry_deviation",
+    "rule_text": "Reasons referencing simple stoichiometry, fewer constituent elements, or chemical composition within known feasible or previously synthesized ranges."
+  },
+  {
+    "rule": "R43",
+    "name": "Charge Balance Deviation",
+    "definition": "Per-site or composition-level deviation from charge balance.",
+    "function": "rule_43_charge_balance_deviation",
+    "column": "rule_43_charge_balance_deviation",
+    "rule_text": "Reasons mentioning that unrealistic or highly imbalanced charge distributions hinder stability and synthesis, while balanced distributions support it."
+  },
+  {
+    "rule": "R44",
+    "name": "Site Disorder Score",
+    "definition": "Occupancy-based measure of crystallographic site disorder.",
+    "function": "rule_44_site_disorder_score",
+    "column": "rule_44_site_disorder_score",
+    "rule_text": "Reasons noting that unusual, complex, or partial site occupancy patterns complicate synthesis, while full occupancy supports it."
+  },
+  {
+    "rule": "R45",
+    "name": "Min Antisite Formation-Energy Proxy",
+    "definition": "Proxy based on cation electronegativity similarity, related to antisite disorder tendency.",
+    "function": "rule_45_min_antisite_formation_energy",
+    "column": "rule_45_min_antisite_formation_energy",
+    "rule_text": "Reasons referencing a low minimum electronegativity difference between cations in a compound, which is associated with a reduced tendency for antisite defect formation. When two or more cations have similar electronegativities, it becomes energetically less favorable for them to swap lattice sites (antisite disorder), thereby supporting the formation of a more ordered and synthesizable structure."
+  },
+  {
+    "rule": "R46",
+    "name": "Surface Energy Proxy",
+    "definition": "Fraction of undercoordinated sites as a proxy for surface or interface instability.",
+    "function": "rule_46_surface_energy_proxy",
+    "column": "rule_46_surface_energy_proxy",
+    "rule_text": "Reasons referencing the need for reasonable surface energy, stable surface terminations, or interface compatibility to facilitate nucleation and growth."
+  },
+  {
+    "rule": "R47",
+    "name": "Synthesis Complexity Proxy",
+    "definition": "Composite score based on number of elements, rare-earth content, and unusual coordination.",
+    "function": "rule_47_synthesis_complexity_proxy",
+    "column": "rule_47_synthesis_complexity_proxy",
+    "rule_text": "Reasons referencing the lack of need for rare, unstable, or inaccessible precursors, and compatibility with known synthesis routes as supporting feasibility."
+  },
+  {
+    "rule": "R48",
+    "name": "Max Thermodynamic Stability Deviation",
+    "definition": "Deviation of formation energy per atom or related thermodynamic quantity.",
+    "function": "rule_48_max_thermodynamic_stability_deviation",
+    "column": "rule_48_max_thermodynamic_stability_deviation",
+    "rule_text": "Reasons referencing the avoidance of highly unstable or negative thermal properties (e.g., expansion, decomposition) as aiding synthesis."
+  },
+  {
+    "rule": "R49",
+    "name": "Min Migration Barrier Proxy",
+    "definition": "Proxy based on mobile-ion radius and structural density.",
+    "function": "rule_49_min_migration_barrier",
+    "column": "rule_49_min_migration_barrier",
+    "rule_text": "Reasons referencing low atomic displacement parameters (ADPs), moderate atomic vibrations, and the absence of extreme atomic displacements as supporting structural reliability."
+  },
+  {
+    "rule": "R50",
+    "name": "Environmental Sensitivity Proxy",
+    "definition": "Score reflecting the presence of air-, moisture-, or chemically reactive elements.",
+    "function": "rule_50_env_sensitivity_proxy",
+    "column": "rule_50_env_sensitivity_proxy",
+    "rule_text": "Reasons referencing low configurational entropy, minimal disorder, and the absence of excessive entropy as favoring stable phase formation and synthesis."
+  }
+]

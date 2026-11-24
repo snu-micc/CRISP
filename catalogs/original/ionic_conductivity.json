@@ -1,0 +1,177 @@
+[
+  {
+    "rule": "R01",
+    "name": "Mobile-Ion Defect Connectivity",
+    "definition": "Graph score combining mobile-site occupancy-vacancy balance, connected-component coverage, and local pathway coordination.",
+    "function": "rule_mobile_ion_defect_connectivity",
+    "column": "R01"
+  },
+  {
+    "rule": "R02",
+    "name": "Soft-Anion Framework",
+    "definition": "Composition-weighted anion polarizability combined with framework bond weakness, compliance, and connectivity.",
+    "function": "rule_r02_soft_anion_framework",
+    "column": "R02"
+  },
+  {
+    "rule": "R03",
+    "name": "Accessible Free-Volume Connectivity",
+    "definition": "Sphere-based free-volume estimate combined with local cage clearance and bottleneck accessibility along mobile-ion paths.",
+    "function": "rule_accessible_free_volume_connectivity",
+    "column": "R03"
+  },
+  {
+    "rule": "R04",
+    "name": "Mobile-Ion Dynamic Delocalization",
+    "definition": "Occupancy disorder, split-site proximity, local-environment similarity, short-hop quality, and mobile-network coverage.",
+    "function": "rule_mobile_ion_dynamic_delocalization",
+    "column": "R04"
+  },
+  {
+    "rule": "R05",
+    "name": "Mobile-Ion Hop-Network Quality",
+    "definition": "Mobile-ion graph score based on hop distance, bottleneck clearance, occupancy, network regularity, vacancy, and repulsion.",
+    "function": "rule_05_mobile_ion_hop_network",
+    "column": "R05"
+  },
+  {
+    "rule": "R06",
+    "name": "Bottleneck-to-Mobile-Ion Radius Ratio",
+    "definition": "Mean limiting pathway clearance normalized by mobile-ion radius and weighted by bottleneck uniformity and site connectivity.",
+    "function": "rule_r06_bottleneck_to_mobile_ion_ratio",
+    "column": "R06"
+  },
+  {
+    "rule": "R07",
+    "name": "Symmetric Mobile-Ion Pathways",
+    "definition": "Weighted measure of crystal symmetry, equivalent mobile sites, lattice regularity, hop uniformity, and local bottleneck symmetry.",
+    "function": "rule_r07_symmetric_mobile_ion_pathways",
+    "column": "R07"
+  },
+  {
+    "rule": "R08",
+    "name": "Periodic Mobile-Ion Network Dimensionality",
+    "definition": "Periodic mobile-site graph evaluated by translation-cycle rank, component coverage, pathway isotropy, and route redundancy.",
+    "function": "rule_r08_mobile_ion_network_3d",
+    "column": "R08"
+  },
+  {
+    "rule": "R09",
+    "name": "Mobile-Site Shallowness",
+    "definition": "Local binding-weakness proxy combining coordination, radial and electrostatic interactions, distortion, flexibility, and vacancy.",
+    "function": "rule_r09_mobile_site_shallowness",
+    "column": "R09"
+  },
+  {
+    "rule": "R10",
+    "name": "Mobile-Ion Network Uniformity",
+    "definition": "Connected-network coverage combined with uniformity of hop distances, coordination, local environments, and graph degree.",
+    "function": "rule_mobile_ion_network_uniformity",
+    "column": "R10"
+  },
+  {
+    "rule": "R11",
+    "name": "Migration-Bottleneck Radius Matching",
+    "definition": "Agreement between sampled pathway clearance and mobile-ion radius, including bottleneck-shape and long-hop penalties.",
+    "function": "rule_r11_migration_bottleneck_radius_match",
+    "column": "R11"
+  },
+  {
+    "rule": "R12",
+    "name": "Ion-Transport Network Quality",
+    "definition": "Composite graph measure of component coverage, periodic dimensionality, hop regularity, accessibility, and environment similarity.",
+    "function": "rule_ion_transport_network_quality",
+    "column": "R12"
+  },
+  {
+    "rule": "R13",
+    "name": "Percolating Mobile-Ion Free Volume",
+    "definition": "Voxelized free-volume connectivity and periodic winding retained across multiple mobile-ion-radius accessibility thresholds.",
+    "function": "rule_r13_percolating_mobile_ion_free_volume",
+    "column": "R13"
+  },
+  {
+    "rule": "R14",
+    "name": "Anion Softness and Weak Coordination",
+    "definition": "Nearest-anion-shell score based on polarizability, radius, electronegativity, separation, and mobile-ion coordination.",
+    "function": "rule_r14_anion_softness_weak_coordination",
+    "column": "R14"
+  },
+  {
+    "rule": "R15",
+    "name": "Mobile-Ion Pathway Uniformity",
+    "definition": "Uniformity of mobile-site coordination, bond distances, angular environments, interaction strengths, and pathway degrees.",
+    "function": "rule_mobile_ion_pathway_uniformity",
+    "column": "R15"
+  },
+  {
+    "rule": "R16",
+    "name": "Three-Dimensional Mobile-Ion Void Network",
+    "definition": "Periodic network formed by occupied mobile sites and accessible interstitial grid points, scored by dimensionality and coverage.",
+    "function": "rule_r16_three_dimensional_mobile_network",
+    "column": "R16"
+  },
+  {
+    "rule": "R17",
+    "name": "Partial-Occupancy Mobile-Ion Network",
+    "definition": "Carrier density, partial-site vacancy balance, occupancy uniformity, and nearest-site connectivity for mobile species.",
+    "function": "rule_mobile_ion_partial_occupancy_network",
+    "column": "R17"
+  },
+  {
+    "rule": "R18",
+    "name": "Three-Dimensional Mobile-Ion Topology",
+    "definition": "Adaptive same-species periodic graph scored by translation-cycle rank, component coverage, and local route multiplicity.",
+    "function": "rule_3d_mobile_ion_network",
+    "column": "R18"
+  },
+  {
+    "rule": "R19",
+    "name": "Mobile-Ion Sublattice Disorder",
+    "definition": "Occupancy disorder weighted by connectivity between mobile sites with similar coordination and electronegativity environments.",
+    "function": "rule_r19_mobile_ion_sublattice_disorder",
+    "column": "R19"
+  },
+  {
+    "rule": "R20",
+    "name": "Bond-Valence Percolation",
+    "definition": "Mobile-site bond-valence mismatch and energy smoothness combined with periodic graph connectivity and dimensionality.",
+    "function": "rule_r20_bond_valence_percolation",
+    "column": "R20"
+  },
+  {
+    "rule": "R21",
+    "name": "Mobile-Ion Vacancy Connectivity",
+    "definition": "Carrier-vacancy balance and density combined with the coverage and activity of the connected mobile-site network.",
+    "function": "rule_r21_mobile_ion_vacancy_connectivity",
+    "column": "R21"
+  },
+  {
+    "rule": "R22",
+    "name": "Mobile-Ion Displacement Pathway",
+    "definition": "Geometric pathway score combining hop distance, bottleneck clearance, cage openness, directionality, and network coverage.",
+    "function": "rule_r22_mobile_ion_displacement_pathway",
+    "column": "R22"
+  },
+  {
+    "rule": "R23",
+    "name": "Open, Flexible Percolation Network",
+    "definition": "Framework openness, coherence, and bond-length flexibility combined with mobile-path dimensionality and bottleneck clearance.",
+    "function": "rule_r23_open_flexible_percolation",
+    "column": "R23"
+  },
+  {
+    "rule": "R24",
+    "name": "Mobile-Ion Pathway Connectivity",
+    "definition": "Clearance-filtered periodic graph scored by dimensionality, occupancy coverage, pathway width, uniformity, and dead ends.",
+    "function": "rule_r24_mobile_ion_pathway_connectivity",
+    "column": "R24"
+  },
+  {
+    "rule": "R25",
+    "name": "Crystallographic Disorder",
+    "definition": "Occupancy-based global and mobile-site disorder combined with site deficiency, split-site proximity, and disorder connectivity.",
+    "function": "rule_r25_crystallographic_disorder",
+    "column": "R25"
+  }
+]

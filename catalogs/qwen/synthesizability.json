@@ -1,0 +1,352 @@
+[
+  {
+    "rule": "R01",
+    "name": "Mean distance from a signed site bond-valence sum to an allowed common valence",
+    "definition": "Bond-valence sums (BVS) computed from observed bond lengths should closely match the formal oxidation state of each atom (within ±0.3 v.u.). Significant BVS deviations reveal charge imbalances or unrealistic bond-length distributions, indicating the structure is electronically inconsistent and therefore unlikely to be synthesized as a stable compound.",
+    "function": "rule_01",
+    "column": "R01"
+  },
+  {
+    "rule": "R02",
+    "name": "Fraction of sites with extreme first-shell coordination (CN <= 2 or > 10); all-site geometry proxy, not an oxidation-specific radius test",
+    "definition": "Coordination numbers of each cation, derived from nearest-neighbor analysis of the CIF coordinates, should be physically reasonable. Extremely high coordination numbers (e.g., >10) or abnormally low ones (e.g., linear 2-coordinate for large cations) may indicate unstable local environments. Unusual coordination geometries that do not match the expected preference of the cation size and electronic configuration reduce the likelihood of successful synthesis.",
+    "function": "rule_02",
+    "column": "R02"
+  },
+  {
+    "rule": "R03",
+    "name": "Magnitude by which the nominal hard-sphere free-volume fraction lies outside the member's 10–35% band",
+    "definition": "Packing efficiency and void fraction** – The void fraction (unoccupied volume in the unit cell) should fall within a moderate range (typically 10–35%). Excessively high void fractions (>50%) suggest the framework is not a true energy minimum, while near-zero voids indicate severe repulsive overlap. Reasonable packing implies a stable, synthesizable arrangement.",
+    "function": "rule_03",
+    "column": "R03"
+  },
+  {
+    "rule": "R04",
+    "name": "Largest fractional compression relative to the sum of the two tabulated covalent radii",
+    "definition": "No atom–atom overlaps or unphysically short non-bonded contacts.** All interatomic distances in the CIF must exceed the sum of van der Waals radii (for non-bonded pairs) or covalent radii (for bonded pairs). Any pair of atoms closer than their respective van der Waals or covalent radius sum signals steric clash or electron-density overlap, an immediate red flag that the structure is geometrically impossible and cannot correspond to a real, synthesizable phase.",
+    "function": "rule_04",
+    "column": "R04"
+  },
+  {
+    "rule": "R05",
+    "name": "Mean per-site angular strain (degrees): nearest common ideal pair angle; a site without angles contributes zero accumulated distortion",
+    "definition": "Bond angles around each coordination polyhedron should approximate ideal values (e.g., 180°/90° for octahedral, 109.5° for tetrahedral). Systematic, large angular distortions (>15–20°) across multiple polyhedra indicate cumulative geometric strain, which raises the internal energy of the lattice and makes the phase unlikely to nucleate and grow as a stable crystal during synthesis.",
+    "function": "rule_05",
+    "column": "R05"
+  },
+  {
+    "rule": "R06",
+    "name": "Independent lattice-metric parameters for the detected crystal system",
+    "definition": "(Space group symmetry) The space group and its complexity directly influence synthesizability. Simple, high-symmetry groups (e.g., Pm-3m, Im-3m, P63/mmc) imply fewer independent parameters and lower entropic barriers to ordering, making the structure more accessible under standard solid-state or hydrothermal conditions. Highly complex or low-symmetry groups (e.g., P1, P-1 with many independent atoms) often demand precise templating, slow nucleation, or extreme conditions, reducing the likelihood of reproducible synthesis.",
+    "function": "rule_06",
+    "column": "R06"
+  },
+  {
+    "rule": "R07",
+    "name": "Fraction of sites with a common fourfold or sixfold first coordination shell; no prototype database",
+    "definition": "Coordination polyhedra and coordination numbers: Common, well-known coordination geometries (octahedral, tetrahedral, square-planar) are easier to realize synthetically because they arise from standard bonding preferences. Unusual or extreme coordination numbers (e.g., >10 for a small cation, or very low coordination for a highly charged ion) require precise control of ligand environment and may indicate a kinetically trapped, non-thermodynamic structure.",
+    "function": "rule_07",
+    "column": "R07"
+  },
+  {
+    "rule": "R08",
+    "name": "Mean absolute deviation in angstrom of first-shell lengths from additive covalent radii",
+    "definition": "Bond length plausibility** – All interatomic distances in the CIF should fall within ±0.2 Å of expected values derived from Pauling ionic radii or covalent radii tables. Unreasonably short bonds imply orbital overlap catastrophes, while excessively long bonds indicate no meaningful bonding interaction, both signaling a physically unrealizable structure.",
+    "function": "rule_08",
+    "column": "R08"
+  },
+  {
+    "rule": "R09",
+    "name": "Maximum within-element spread in empirical signed site bond-valence sums, or in charge-sharing site strengths if elemental empirical parameters are missing",
+    "definition": "(The bond valence sum spread for a given element across all its crystallographic sites should be small. A wide spread indicates that the same cation occupies very different chemical environments, which is a hallmark of metastable or kinetically trapped structures that are difficult to obtain reproducibly.)",
+    "function": "rule_09",
+    "column": "R09"
+  },
+  {
+    "rule": "R10",
+    "name": "Number of distinct elements in the composition",
+    "definition": "Fewer distinct elements in the composition (extracted from the CIF _chemical_formula_sum) correlate strongly with easier synthesis, as fewer elemental sources are needed, stoichiometric control is simpler, and the probability of unwanted secondary phases decreases. Structures with two or three elements (e.g., binary oxides) are far more readily synthesized than quaternary or quinary compounds, where precise co-precipitation or solid-state mixing of multiple precursors becomes a critical bottleneck.",
+    "function": "rule_10",
+    "column": "R10"
+  },
+  {
+    "rule": "R11",
+    "name": "Order of the crystallographic point group (distinct rotations, translations excluded)",
+    "definition": "High-symmetry space groups (e.g., cubic, hexagonal) with higher point groups indicate thermodynamically stable, energetically favorable arrangements. Materials crystallizing in high-symmetry settings are more likely to form spontaneously under conventional synthesis conditions. Low-symmetry or low-number space groups may signal metastable or kinetically trapped phases that are difficult to access via standard solid-state, hydrothermal, or flux methods, making symmetry a primary filter for synthesizability.",
+    "function": "rule_11",
+    "column": "R11"
+  },
+  {
+    "rule": "R12",
+    "name": "Largest sitewise coefficient of variation of first-shell bond lengths: local radial distortion, not a chemical assignment",
+    "definition": "Coordination geometry validity. The coordination polyhedra around each cation, determined from CIF connectivity, must be geometrically and electronically reasonable: d⁰ and d¹⁰ cations tolerate a wide range, whereas Jahn–Teller-active ions (e.g., Cu²⁺, Mn³⁺) demand characteristic distortions. Anomalous coordination numbers or impossible geometries (e.g., 3-fold coordinated alkali metal in a dense oxide) suggest non-synthesizability.",
+    "function": "rule_12",
+    "column": "R12"
+  },
+  {
+    "rule": "R13",
+    "name": "Fraction of all sites in explicitly enumerated tetrahedral or octahedral oxide building blocks (coordination and neighbor elements)",
+    "definition": "The structure should be composed of well-known, stable polyhedral building blocks such as SiO₄/PO₄ tetrahedra, MO₆ octahedra, or common chains and layers. Structures built from unrecognized or highly unusual polyhedral connections that do not correspond to established motifs are significantly less likely to be synthesizable.",
+    "function": "rule_13",
+    "column": "R13"
+  },
+  {
+    "rule": "R14",
+    "name": "Multiplicity-weighted mean number of equivalent sites per crystallographic orbit",
+    "definition": "Crystal symmetry serves as a proxy for thermodynamic stability. Higher-symmetry space groups (e.g., cubic, hexagonal) generally correspond to lower-energy, more isotropic bonding environments that are easier to nucleate and grow. Very low-symmetry structures (triclinic, P1) often represent local kinetic minima or defect motifs and are harder to obtain as pure, single-phase products. Symmetry also simplifies the stoichiometric and geometric constraints required during synthesis.",
+    "function": "rule_14",
+    "column": "R14"
+  },
+  {
+    "rule": "R15",
+    "name": "Fraction of sites with mixed species or incomplete occupancy; full substitutional disorder counts but is not a vacancy",
+    "definition": "Fraction of atomic sites with partial or disordered occupancies (occupancy <1.0) in the CIF. High disorder (>20% of sites partially occupied, multiple scattering sites, or unresolved positional disorder) often reflects kinetic trapping during crystal growth. Such structures are reproducible with low yield and poor phase purity, indicating the material is marginal or difficult to synthesize in bulk.",
+    "function": "rule_15",
+    "column": "R15"
+  },
+  {
+    "rule": "R16",
+    "name": "Bounded multicomponent crystal-consistency score.",
+    "definition": "The assigned oxidation states should correspond to common, well-characterized ionic or covalent states of the constituent elements (e.g., Fe²⁺/Fe³⁺, Cu⁺/Cu²⁺, Ti³⁺/Ti⁴⁺). Exotic or uncommon oxidation states (e.g., Mo⁰, W¹⁺, Cr⁵⁺) require extreme redox conditions, specialized reductants/oxidants, or inert-atmosphere processing, drastically limiting practical synthesizability.",
+    "function": "rule_16",
+    "column": "R16"
+  },
+  {
+    "rule": "R17",
+    "name": "Hard-sphere interstitial volume fraction with a common radius scale reduced only when needed to prevent overlap",
+    "definition": "(Free volume / void fraction: The ratio of unoccupied interstitial volume to total cell volume (calculated via Voronoi or hard-sphere models on the CIF) informs synthetic accessibility. Moderate voids (10–30%) accommodate guest species and facilitate ion migration during growth. Voids >50% or <5% can indicate a framework that requires specific templating agents or is so rigid it collapses without in-situ stabilization.)",
+    "function": "rule_17",
+    "column": "R17"
+  },
+  {
+    "rule": "R18",
+    "name": "Fraction of first-shell contacts within 15% of the covalent-radius sum",
+    "definition": "All bond lengths must fall within ±15% of expected values derived from ionic/covalent radius additivity or known analogues. Bonds that are significantly too long suggest weak, unstable interactions, while bonds that are too short indicate impossible compression. Out-of-range distances flag structurally implausible entries unlikely to be obtained as stable phases.",
+    "function": "rule_18",
+    "column": "R18"
+  },
+  {
+    "rule": "R19",
+    "name": "Mean magnitude outside the stated 0.8–1.3 first-shell covalent-radius window",
+    "definition": "All interatomic distances should fall within a physically reasonable range, typically 0.8–1.3 times the sum of the relevant ionic or covalent radii. Bonds that are too short indicate impossible orbital overlap or steric clash, while excessively long bonds suggest the framework lacks sufficient cohesive energy to hold together, both pointing to a non-synthesizable structure.",
+    "function": "rule_19",
+    "column": "R19"
+  },
+  {
+    "rule": "R20",
+    "name": "Absolute net charge per site of independently selected BVS-nearest common valences; not measured oxidation states",
+    "definition": "Charge balance and oxidation state compatibility: All formal oxidation states must be chemically plausible and consistent with known valences, and the structure must satisfy overall charge neutrality. Structures requiring unusual or unsupported oxidation states (e.g., Fe⁰ in a simple oxide, or C⁴⁻ in an inorganic framework) indicate the required redox chemistry may be unachievable, sharply reducing synthesizability.",
+    "function": "rule_20",
+    "column": "R20"
+  },
+  {
+    "rule": "R21",
+    "name": "Repeat probability of chemical coordination fingerprints within the unit cell; recurrence, not experimental precedent",
+    "definition": "(The presence of well-known, recurring structural motifs—such as spinel, perovskite, zeolite frameworks, or rutile-type substructures—supports synthesizability because these building blocks are proven to assemble under established chemical conditions. Structures composed entirely of unprecedented or highly unusual coordination polyhedra lack precedent, suggesting unknown or unachievable synthetic pathways.)",
+    "function": "rule_21",
+    "column": "R21"
+  },
+  {
+    "rule": "R22",
+    "name": "Smallest absolute net charge per atom with one tabulated common integer valence per element; mixed valence not assigned",
+    "definition": "(Charge neutrality must be satisfied: the sum of all cationic oxidation states must exactly balance the total anionic charge. A CIF describing a non-neutral, non-compensated composition represents an impossible bulk phase, immediately ruling out synthesizability. Verification of this is the most fundamental check on any proposed inorganic structure.)",
+    "function": "rule_22",
+    "column": "R22"
+  },
+  {
+    "rule": "R23",
+    "name": "Mean local mismatch between a central covalent radius and the cavity implied by its neighbors; geometric proxy, not a Shannon ratio",
+    "definition": "Ionic radii of cations must fall within the Goldschmidt tolerance or radius-ratio limits for their coordination polyhedra. Severe radius mismatches (cations significantly smaller or larger than the polyhedral cavity) create excessive lattice strain, making the structure metastable or unobtainable under equilibrium synthesis conditions.",
+    "function": "rule_23",
+    "column": "R23"
+  },
+  {
+    "rule": "R24",
+    "name": "Count of symmetry-inequivalent occupied sites in the recorded unit cell",
+    "definition": "The number of atoms in the asymmetric unit should be small. A large asymmetric unit indicates a complex, unique structural motif with many independent degrees of freedom, making reproducible synthesis difficult. Structures with a few atoms in the asymmetric unit can form through simple diffusion-limited or self-assembly pathways under moderate conditions.",
+    "function": "rule_24",
+    "column": "R24"
+  },
+  {
+    "rule": "R25",
+    "name": "Largest fraction matching one simple local prototype signature (tetrahedral AB, octahedral AB, eightfold AB or close-packed elemental); not a database match",
+    "definition": "The structure should show measurable similarity (via fingerprint vectors, connectivity, or topological matching) to at least one known, experimentally synthesized phase in the same or adjacent chemical family. Absence of any structural precedent in a well-explored composition space is a strong negative indicator of synthesizability.",
+    "function": "rule_25",
+    "column": "R25"
+  },
+  {
+    "rule": "R26",
+    "name": "RMS fractional departure of first-shell contact lengths from covalent-radius sums",
+    "definition": "Bond lengths in the CIF should fall within 10–15% of expected ionic or covalent radii sums. Significant deviations indicate extreme compressive or tensile strain in the lattice, implying the structure exists far from its equilibrium energy minimum and would require extraordinary synthesis conditions such as extreme pressure or metastable precursors to realize.",
+    "function": "rule_26",
+    "column": "R26"
+  },
+  {
+    "rule": "R27",
+    "name": "Mean electronegativity contrast across the actual first-neighbor contacts, proxy for pair chemistry, not evidence of known phases",
+    "definition": "(The elemental composition should be composed of elements with well-known binary or ternary bonding tendencies and compatible electronegativities. Combinations that fall within established chemical systematics (e.g., known ABO₃, MX₂ families) are more synthesizable. Unusual element pairings with no precedent in the literature, or extreme electronegativity mismatches, suggest the phase may exist only under exotic conditions or as a metastable intermediate.)",
+    "function": "rule_27",
+    "column": "R27"
+  },
+  {
+    "rule": "R28",
+    "name": "Atomic fraction of elements with no stable isotopes; a handling/availability indicator, not a precursor price or a route",
+    "definition": "Elemental composition in the CIF should consist of commonly available, non-radioactive elements with established synthetic precedents. The presence of extremely rare, highly electropositive, or transuranic elements drastically reduces synthesizability, as appropriate precursors and reaction conditions become impractical. A material built from abundant elements (Si, O, Al, Fe, transition metals) with known binary/ternary oxide or chalcogenide chemistry is far more likely to be accessible via solid-state, sol-gel, or hydrothermal routes.",
+    "function": "rule_28",
+    "column": "R28"
+  },
+  {
+    "rule": "R29",
+    "name": "Number of reduced formula units in the stored unit cell (pymatgen reduced-composition convention)",
+    "definition": "(A small unit cell containing few formula units (low Z) indicates a simpler structural motif, which is generally easier to nucleate, grow, and reproduce under standard solid-state or hydrothermal conditions. Very large unit cells (e.g., >200 atoms) often reflect complex cation ordering, superstructure formation, or long-period modulations that demand narrow compositional windows and precise thermal histories, reducing practical synthesizability.)",
+    "function": "rule_29",
+    "column": "R29"
+  },
+  {
+    "rule": "R30",
+    "name": "Component-size-weighted rank of periodic translation cycles in a geometric first-shell network (0D–3D)",
+    "definition": "Structural dimensionality and connectivity: Fully connected 3D frameworks with high topological complexity (e.g., interpenetrating subnets, unusual net types) are harder to synthesize than discrete clusters, 1D chains, or simple 2D layers. The connectivity pattern governs the number of competing bond-forming events during nucleation, directly affecting synthetic feasibility.",
+    "function": "rule_30",
+    "column": "R30"
+  },
+  {
+    "rule": "R31",
+    "name": "Crystallographic information per cell: number of sites times Shannon entropy of orbit multiplicities (bits/cell)",
+    "definition": "Structural complexity (unique atom count, space group, unit cell size): Simpler structures with fewer unique atom sites, higher symmetry, and smaller unit cells are significantly easier to synthesize. A CIF with many disordered sites, low symmetry (P1), or a large unit cell introduces many degrees of freedom that must be simultaneously satisfied, making reproducible synthesis far more challenging.",
+    "function": "rule_31",
+    "column": "R31"
+  },
+  {
+    "rule": "R32",
+    "name": "Mean site occupancy deficit",
+    "definition": "High atomic displacement parameters (U_iso or U_eq values > ~0.08 Å²) and partial site occupancies (well below 1.0) reveal significant positional or compositional disorder. Disordered structures often form only under metastable conditions, with kinetic trapping rather than thermodynamic driving force. Such features in a CIF flag that the phase may be a byproduct, a surface phase, or a product requiring very slow, carefully controlled cooling rather than a robust bulk phase.",
+    "function": "rule_32",
+    "column": "R32"
+  },
+  {
+    "rule": "R33",
+    "name": "Fraction of one-common-valence-per-element assignments that exactly charge-balance the composition (not a posterior probability)",
+    "definition": "Overall charge balance and electroneutrality: Summing all cation and anion charges from the CIF's chemical formula and assigned oxidation states must yield a net-zero cell. A charged unit cell (e.g., net +1 or −2 per formula unit) without a compensating counter-ion indicates an incomplete or incorrect structure, precluding it from representing a real, synthesizable compound.",
+    "function": "rule_33",
+    "column": "R33"
+  },
+  {
+    "rule": "R34",
+    "name": "Unclipped nominal hard-sphere packing fraction from fixed covalent radii; values above one indicate overlapping nominal spheres",
+    "definition": "(The packing fraction, derived from atomic volumes relative to unit cell volume, should be reasonable (typically 0.5–0.8 for dense inorganic solids). Very low packing fractions suggest excessive void space, implying a high-temperature or metastable framework that may collapse under ambient conditions. Very high packing fractions beyond physical limits indicate unphysical structures. Normal packing efficiency supports thermodynamic stability and practical synthesizability.)",
+    "function": "rule_34",
+    "column": "R34"
+  },
+  {
+    "rule": "R35",
+    "name": "Crystal mass density, in grams per cubic centimeter",
+    "definition": "The calculated density (mass of unit cell divided by unit cell volume) should fall within a physically reasonable range for the constituent elements (typically 1–22 g/cm³ for common inorganics). Anomalous densities (e.g., >30 g/cm³ for a light-element compound) or unreasonably large void fractions suggest the structure may not pack into a real, stable crystalline phase.",
+    "function": "rule_35",
+    "column": "R35"
+  },
+  {
+    "rule": "R36",
+    "name": "Archived energy above hull (eV per atom)",
+    "definition": "Thermodynamic stability via formation energy: A negative enthalpy of formation relative to constituent elements indicates the compound is thermodynamically favorable. Materials far above the convex hull in energy are unlikely to form under standard synthesis conditions. CIF-derived structural data combined with computational formation energies (e.g., DFT) allows assessment of whether the structure represents a local or global energy minimum, a prerequisite for reproducible synthesis.",
+    "function": "rule_36",
+    "column": "R36"
+  },
+  {
+    "rule": "R37",
+    "name": "Fraction of occupied sites that are symmetry-inequivalent in the supplied cell",
+    "definition": "The number of independent (Wyckoff) atomic sites should be modest relative to the total atom count. A small number of unique positions implies a simple, highly symmetric framework with fewer constraints to satisfy during nucleation and growth. Many unique sites (e.g., > 15 independent positions) demand precise positional ordering, increasing kinetic barriers and sensitivity to synthesis conditions.",
+    "function": "rule_37",
+    "column": "R37"
+  },
+  {
+    "rule": "R38",
+    "name": "All-site tetrahedral/octahedral shape participation: angular agreement with the ideal ligand-pair angles; no ionic-radius lookup",
+    "definition": "(Presence of known structural subunits and motifs) If the CIF structure can be decomposed into well-known polyhedral building blocks (SiO₄, TiO₆, AlO₆, etc.) and recognized archetypal arrangements, it is more likely synthesizable. Familiar motifs correspond to established synthetic pathways, whereas novel, unrecognizable topologies raise uncertainty about viable synthetic routes and phase purity.",
+    "function": "rule_38",
+    "column": "R38"
+  },
+  {
+    "rule": "R39",
+    "name": "Minimum distance/sum-of-covalent-radii over distinct atoms in the infinite periodic crystal, including the nearest self image",
+    "definition": "(Absence of unphysical atomic overlaps and unreasonable voids), A CIF must show no unphysically close atom–atom contacts (less than the sum of van der Waals radii) and no excessively large empty voids unaccounted for by the known composition. Such geometric impossibilities indicate the structure is a computational artifact or misindexed unit cell, and the material cannot be isolated as a real crystalline phase.",
+    "function": "rule_39",
+    "column": "R39"
+  },
+  {
+    "rule": "R40",
+    "name": "Axial-ratio-penalized atomic packing fraction",
+    "definition": "Unit cell volume and mass density** – A reasonable unit cell volume (typically < 10,000 Å³) and physically plausible mass density (consistent with constituent atomic masses) indicate a compact, stable lattice. Excessively large cells suggest complex frameworks or inclusion of solvent/voids that are difficult to reproduce in bulk synthesis, raising the probability that the structure is a metastable artifact.",
+    "function": "rule_40",
+    "column": "R40"
+  },
+  {
+    "rule": "R41",
+    "name": "Inequivalent-site count times unit-cell formula units",
+    "definition": "The number of atoms in the asymmetric unit (Z') should be moderate. Structures with very high Z' (e.g., >30) imply extreme compositional complexity and multiple distinct sites, making reproducible synthesis highly challenging. Low Z' values (1–4) typically correspond to simple, well-defined structures that crystallize readily under predictable conditions.",
+    "function": "rule_41",
+    "column": "R41"
+  },
+  {
+    "rule": "R42",
+    "name": "Coordinate and symmetry consistency, overlap and order composite",
+    "definition": "The assigned space group must be fully consistent with the atomic coordinates, including all symmetry operations, special positions, and equivalent atoms. Violations of site symmetry, missing symmetry-related atoms, or incompatible space-group assignments indicate a flawed or fictitious structure. A crystallographically sound, symmetry-consistent model is essential for a real, synthesizable phase.",
+    "function": "rule_42",
+    "column": "R42"
+  },
+  {
+    "rule": "R43",
+    "name": "Site-occupancy-weighted fraction of H or low-coordinate alkali species (first-shell CN <= 4); candidate labile species, not an identification of trapped solvent",
+    "definition": "(Presence of volatile or labile species): CIF entries containing water, methanol, ammonia, or light alkali cations in channels or interlayer sites signal that the structure is often only accessible via hydrothermal, solvothermal, or ion-exchange routes. These species may be lost upon heating or in ambient air, making isolation of the as-synthesized phase difficult and limiting synthetic reproducibility.",
+    "function": "rule_43",
+    "column": "R43"
+  },
+  {
+    "rule": "R44",
+    "name": "Spread of Pauling electronegativity contrasts across first-shell contacts",
+    "definition": "Electronegativity compatibility and bond character: From the elements in the CIF formula, assess electronegativity differences between bonded pairs. Bonds should match expected ionic, covalent, or metallic character for the element pair (e.g., metal–O ionic, Si–O covalent). Structures forcing inappropriate bonding (e.g., highly covalent bonds across large electronegativity gaps, or ionic bonds between similar electronegativities) are unlikely to form under standard synthesis routes.",
+    "function": "rule_44",
+    "column": "R44"
+  },
+  {
+    "rule": "R45",
+    "name": "Composition, stoichiometry, occupancy and formal-charge composite",
+    "definition": "Stoichiometric simplicity of the formula strongly correlates with ease of synthesis. Whole-number or simple fractional ratios (e.g., AB, AB₂, A₂B₃, A₃B₄) correspond to well-defined stoichiometric compounds accessible by balancing precursor mixtures with high accuracy. Complex or non-integer ratios (e.g., A₁.₀₃B₀.₉₇C₁.₁₂) indicate intrinsic non-stoichiometry, vacancy disorder, or site-mixing, all of which broaden the compositional window, complicate phase-pure isolation, and demand precise thermodynamic control during synthesis.",
+    "function": "rule_45",
+    "column": "R45"
+  },
+  {
+    "rule": "R46",
+    "name": "Lattice aspect, radius-to-volume, angle and edge consistency composite",
+    "definition": "(Lattice parameters should show no extreme anisotropy (c/a ratio within ~0.5–3 for most classes) and unit-cell dimensions should be within typical 3–20 Å ranges. Highly anisotropic or abnormally large unit cells often reflect shear instability, poor stacking tolerance, or phase-association artifacts, all of which reduce the likelihood of reproducible single-phase synthesis.)",
+    "function": "rule_46",
+    "column": "R46"
+  },
+  {
+    "rule": "R47",
+    "name": "Shortest same-element periodic contact relative to the covalent-radius sum; like-element proximity, not assigned like charge",
+    "definition": "(Absence of unphysical anion–anion or cation–cation repulsions) Screen all pairwise distances in the CIF for unreasonably close like-charge contacts (e.g., O···O < 2.4 Å without H-bond justification, or metal–metal overlaps). Such steric/electrostatic violations indicate an unrelaxed or fictitious structure that would collapse under thermodynamic equilibrium, making synthesis implausible.",
+    "function": "rule_47",
+    "column": "R47"
+  },
+  {
+    "rule": "R48",
+    "name": "Signed local electrostatic contact sum per site from BVS-nearest common valences (half the directed first-shell sum); finite-range proxy, not a long-range Madelung energy",
+    "definition": "(The Madelung constant and overall lattice electrostatic energy should be negative, reflecting net Coulombic attraction. Structures exhibiting extreme charge segregation, very high local electrostatic potential at any site, or a positive net electrostatic energy are thermodynamically unstable and will resist formation during any synthesis procedure.)",
+    "function": "rule_48",
+    "column": "R48"
+  },
+  {
+    "rule": "R49",
+    "name": "Fraction of adjacent coordination-center pairs sharing two or more first-shell sites (edge/face versus single-vertex sharing)",
+    "definition": "Cation and anion polyhedra (tetrahedra, octahedra, square-planar, etc.) must exhibit valid vertex-sharing, edge-sharing, or face-sharing connectivity patterns. Edge-sharing of certain tetrahedra (e.g., P–O–P at very small angles) or face-sharing of small-cation octahedra that violate Pauling's rules indicate an unattainable framework topology.",
+    "function": "rule_49",
+    "column": "R49"
+  },
+  {
+    "rule": "R50",
+    "name": "RMS valence mismatch on the negatively polarized branch per occupied site; no anionic contribution gives a defined zero",
+    "definition": "(Electrostatic valence balance per Pauling's third rule: The sum of bond valences arriving at each anion should equal its formal charge. Significant deviations indicate local electrostatic frustration, making the structure thermodynamically unstable and unlikely to form under equilibrium or near-equilibrium synthesis conditions.)",
+    "function": "rule_50",
+    "column": "R50"
+  }
+]

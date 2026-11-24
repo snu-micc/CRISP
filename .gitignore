@@ -1,0 +1,9 @@
+/CRISP_RF_models.zip
+/models/
+/my_results/
+/my_catalogs/
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.env
+.DS_Store

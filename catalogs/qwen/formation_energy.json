@@ -1,0 +1,177 @@
+[
+  {
+    "rule": "R01",
+    "name": "Ratio of the largest to the smallest constituent covalent radius.",
+    "definition": "(Extreme ionic/covalent radius ratio: r_max / r_min over all constituent elements using tabulated Shannon ionic radii or Cordero covalent radii at the relevant coordination.) A large ratio indicates severe size mismatch that distorts the local coordination polyhedra, generates internal strain, and penalizes the formation energy. Conversely, ratios near ideal close-packing values (0.41–0.73) allow efficient anion packing and stabilize the structure relative to the separated elements.",
+    "function": "rule_01",
+    "column": "R01"
+  },
+  {
+    "rule": "R02",
+    "name": "Distinct element count",
+    "definition": "(Number of distinct elements in the chemical formula) This integer captures compositional complexity and the mixing-entropy-like effect on stability. Binary compounds benefit from two strong, chemically matched sub-lattices; adding a third or fourth element introduces competing bond types, site-disorder penalties, and reduced bond-directionality, often shifting ΔE_form toward less negative values. It is a minimal yet powerful indicator of whether the structure can achieve near-optimal bonding for all constituent pairs.",
+    "function": "rule_02",
+    "column": "R02"
+  },
+  {
+    "rule": "R03",
+    "name": "Mean bonded electronegativity contrast plus half the elemental range and the sample standard deviation; uses a periodic first shell when CrystalNN returns no contacts.",
+    "definition": "(Electronegativity difference, Δχ: the maximum or mean Pauling electronegativity gap between cationic and anionic species in the formula. A larger Δχ indicates stronger ionic (Coulombic) bonding, which is the dominant stabilizing contribution to a negative formation energy. This quantity is computed purely from the elemental composition and fixed tabulated Pauling electronegativity values, with no reliance on any computed energy of the material.)",
+    "function": "rule_03",
+    "column": "R03"
+  },
+  {
+    "rule": "R04",
+    "name": "Fractional bond-length RMS with an electronegativity switch, oxidation-state assignment, Shannon or covalent radii, and a periodic nearest-shell fallback.",
+    "definition": "Mean nearest-neighbour bond-length deviation from the sum of tabulated ionic (or covalent) radii. A positive deviation signals stretched, under-coordinated bonds (weaker than ideal), while a negative deviation signals compressed, over-repulsive bonds. Both types of strain raise the total energy relative to a perfectly matched reference, directly shifting formation energy per atom. The metric is computed from CIF Cartesian/fractional coordinates plus tabulated Shannon or Cordero radii.",
+    "function": "rule_04",
+    "column": "R04"
+  },
+  {
+    "rule": "R05",
+    "name": "Number of space-group operations in the input setting",
+    "definition": "Space-group order (number of symmetry operations)** – Read the full space-group symbol from the CIF and look up its point-group and translation order (e.g., Pm3̄m = 48, P1 = 1). Higher symmetry reduces the number of independent positional and strain degrees of freedom, meaning fewer modes of destabilization. Empirically, high-symmetry prototypes (rock-salt, BCC, HCP) occupy lower-energy minima, so the symmetry count is a strong structural prior for formation energy.",
+    "function": "rule_05",
+    "column": "R05"
+  },
+  {
+    "rule": "R06",
+    "name": "Mean number of periodic first-shell neighbors (1.20 times the shortest distance at each site)",
+    "definition": "Average nearest-neighbor coordination number per atom**: Extracted directly from the CIF by counting symmetry-unique neighbors within a distance cutoff (e.g., 1.2 × mean bond length). Higher average CN implies more bonding interactions per atom, increasing cohesive stabilization and driving the formation energy more negative.",
+    "function": "rule_06",
+    "column": "R06"
+  },
+  {
+    "rule": "R07",
+    "name": "Stoichiometry-weighted contrast of unlike first-neighbor contacts; uses a physical first shell when CrystalNN returns no contacts.",
+    "definition": "Mean cation–anion electronegativity difference (Pauling scale), weighted over all distinct pairs in the formula. Larger differences favor stronger ionic bond formation, which is a primary driving force for negative DFT formation energies relative to elemental references.",
+    "function": "rule_07",
+    "column": "R07"
+  },
+  {
+    "rule": "R08",
+    "name": "Mean second-to-first radial-shell distance ratio for unlike-element contacts (all contacts in elemental crystals); packing proxy without assuming site oxidation states",
+    "definition": "(Second-neighbor packing ratio)** From the CIF, compute the mean first-neighbor cation–anion distance and the mean second-neighbor cation–anion distance. Their ratio approximates the local packing geometry (close-packed ≈ 1.732 for cubic). Ratios close to ideal close-packing values indicate efficient packing and stronger secondary electrostatic interactions, lowering ΔH_f per atom.",
+    "function": "rule_08",
+    "column": "R08"
+  },
+  {
+    "rule": "R09",
+    "name": "Symmetry complexity from site-orbit multiplicities, Wyckoff letters, symmetry order, and distinct-element count.",
+    "definition": "Number of crystallographically unique atomic sites (Wyckoff positions) in the asymmetric unit** – Read directly from the CIF. A larger count of inequivalent sites signals greater structural complexity and more degrees of atomic relaxation, which typically correlates with a less negative (less exothermic) formation energy because the structure is farther from a simple, high-symmetry low-energy motif.",
+    "function": "rule_09",
+    "column": "R09"
+  },
+  {
+    "rule": "R10",
+    "name": "Variance of periodic first-shell coordination numbers across sites",
+    "definition": "Coordination-number distribution and its variance across all sites.** Counted directly from CIF neighbor lists within a geometric cutoff. Sites with unusually high or low coordination relative to what is expected from the stoichiometry and ionic sizes indicate frustrated bonding or unsatisfied valence, both of which elevate formation energy. A narrow, chemically rational CN distribution (e.g., all cations octahedrally coordinated in a spinel) signals a well-relaxed structure.",
+    "function": "rule_10",
+    "column": "R10"
+  },
+  {
+    "rule": "R11",
+    "name": "Mean first-shell distance divided by its pair's covalent-radius sum",
+    "definition": "Average nearest-neighbor bond length normalized by the sum of ionic (or covalent) radii** – From CIF interatomic distances and tabulated Shannon/Pauling radii, form d_ij/(r_i + r_j) for every nearest-neighbor pair and average. Ratios significantly below 1 indicate bond compression (stronger overlap, more negative E_f); ratios above 1 signal over-stretched, weaker bonds (less negative E_f). This captures the geometric bond-strength lever directly.",
+    "function": "rule_11",
+    "column": "R11"
+  },
+  {
+    "rule": "R12",
+    "name": "Stoichiometry-weighted standard deviation of outer-shell valence-electron counts",
+    "definition": "Valence-electron spread (σ_VEC):** The standard deviation of tabulated valence electron counts across the distinct elements present, weighted by stoichiometry. A large σ_VEC signals strong electron transfer (ionic) or orbital hybridization (p–d) between dissimilar atoms, enhancing bonding contrast beyond simple averaging and typically correlating with more negative formation energies relative to the elemental baseline.",
+    "function": "rule_12",
+    "column": "R12"
+  },
+  {
+    "rule": "R13",
+    "name": "Minimum absolute residual per reduced formula under one common integer valence per element; mixed valence not assigned",
+    "definition": "Charge-balance residual and oxidation-state pattern.** Assign the most common integer oxidation states consistent with the composition and sum the net charge per formula unit. A residual ≠ 0 signals an ideal charge imbalance that must be compensated by covalent/metallic bonding or defects, increasing formation energy. The number of distinct oxidation states and their cation:anion ratio also capture how well the structure satisfies electrostatic neutrality.",
+    "function": "rule_13",
+    "column": "R13"
+  },
+  {
+    "rule": "R14",
+    "name": "Mean magnitude of independently selected common valences closest to geometry-derived bond-valence sums; ionicity proxy",
+    "definition": "The average absolute formal charge per ion, calculated from stoichiometry and standard oxidation states, scales the Coulombic Madelung-energy contribution. Higher charges (e.g., +3/−3 versus +1/−1) produce much stronger electrostatic stabilization, making formation energy substantially more negative, assuming comparable interionic distances.",
+    "function": "rule_14",
+    "column": "R14"
+  },
+  {
+    "rule": "R15",
+    "name": "Stoichiometry-weighted group-based valence convention",
+    "definition": "Average valence-electron count per atom in the formula unit (sum of tabulated group valences divided by total atom count). This governs whether bonding is predominantly ionic, covalent, or metallic; intermediate electron counts that allow filled-shell or band-gap stabilization tend to lower formation energy relative to very electron-rich or electron-poor compositions.",
+    "function": "rule_15",
+    "column": "R15"
+  },
+  {
+    "rule": "R16",
+    "name": "Continuous per-site angular anisotropy (mean squared first-shell directional resultant); distortion proxy, not a literal variance about one ideal shape",
+    "definition": "(Variance of nearest-neighbour bond angles from the ideal angle of the dominant coordination polyhedron—109.47° for tetrahedral, 90°/180° for octahedral, 70.53° for trigonal-bipyramidal, etc.—computed from CIF coordinates.) Angular distortion breaks degeneracies in the local crystal-field and hybridisation manifold, populating higher-energy antibonding orbitals and introducing torsional strain. Larger variance therefore signals a less optimal electronic structure and a higher (less exothermic) formation energy per atom.",
+    "function": "rule_16",
+    "column": "R16"
+  },
+  {
+    "rule": "R17",
+    "name": "RMS distance of site bond-valence sum to a chemically allowed common oxidation state; estimated, not supplied formal valences",
+    "definition": "The root-mean-square deviation of bond-valence sums from the target integer valence (using Brown–Altermatt or BVS parameters, computed from CIF bond lengths + tabulated b and R₀ constants) measures local electronic over- or under-bonding. Atoms whose Σs(r) departs significantly from their formal oxidation state carry residual charge frustration, indicating an electronically unsatisfied environment that destabilizes the crystal relative to an ideal valence-satisfied reference.",
+    "function": "rule_17",
+    "column": "R17"
+  },
+  {
+    "rule": "R18",
+    "name": "Cell volume divided by the nominal additive covalent-sphere volume",
+    "definition": "Unit-cell volume per atom (V_cell/N_formula): the per-atom volume extracted directly from CIF lattice parameters and stoichiometry. Smaller volume per atom implies denser packing, shorter average interatomic distances, and stronger collective bonding, all driving more negative formation energies. It also proxies structural compression relative to the constituent elements' own equilibrium molar volumes.",
+    "function": "rule_18",
+    "column": "R18"
+  },
+  {
+    "rule": "R19",
+    "name": "Number of ground-state d electrons on transition metals per reduced formula; absence of transition metals contributes zero",
+    "definition": "Total d-electron count per transition-metal site (or per formula unit), derived from composition and tabulated ground-state electronic configurations. Partially filled d-shells enable strong directional and exchange-stabilized bonding; d⁰, d⁵ (half-filled), and d¹⁰ configurations often mark local stability maxima in formation energy.",
+    "function": "rule_19",
+    "column": "R19"
+  },
+  {
+    "rule": "R20",
+    "name": "Mean absolute distance of site bond-valence sum to the nearest common nominal valence; not a measured charge",
+    "definition": "Deviation of the Brown bond-valence sum (Σ exp[−(d−d₀)/b] over all bonds to each atom) from the expected formal oxidation-state valence, averaged over the unit cell (CIF bond lengths + tabulated b, d₀ parameters). Large deviations signal poor charge satisfaction and weaker net bonding, indicating higher formation energy.",
+    "function": "rule_20",
+    "column": "R20"
+  },
+  {
+    "rule": "R21",
+    "name": "Coefficient of variation of first-shell bond lengths",
+    "definition": "Bond-length dispersion: From the CIF, extract all nearest-neighbour cation–anion (or metal–metal) distances, then compute the standard deviation normalised by the mean. Low dispersion reflects a uniform, strain-free bonding network (lower formation energy); high dispersion flags compressed or stretched bonds, local over-/under-coordination, and elastic energy stored in the lattice.",
+    "function": "rule_21",
+    "column": "R21"
+  },
+  {
+    "rule": "R22",
+    "name": "Stoichiometry-weighted standard deviation of covalent radii, in angstrom",
+    "definition": "Variance (or standard deviation) of tabulated Shannon ionic or covalent radii among all constituent elements. A large radius spread indicates severe local size mismatch, generating lattice strain that raises the formation energy above the elemental reference. This is obtained purely from composition and fixed ionic-radius tables.",
+    "function": "rule_22",
+    "column": "R22"
+  },
+  {
+    "rule": "R23",
+    "name": "Strength of the closest metal–metal contact (covalent-radius sum / periodic separation); no metal contacts means zero, not an inferred cation charge",
+    "definition": "Shortest cation–cation distance**: Extracted from the CIF interatomic-distance list, the minimum distance between like-charged cation species indicates whether metal–metal bonding or Pauli repulsion is operative. Distances below the sum of metallic radii suggest stabilising d–d overlap; excessively short distances signal destabilising electron repulsion.",
+    "function": "rule_23",
+    "column": "R23"
+  },
+  {
+    "rule": "R24",
+    "name": "Number density of occupied atoms per cubic angstrom",
+    "definition": "Atomic packing density, defined as the total number of atoms per unit-cell volume (n/V_cell), directly from the CIF. Higher density implies a greater number of interatomic bonding contacts per volume and a larger total cohesive contribution, pushing the formation energy per atom more negative.",
+    "function": "rule_24",
+    "column": "R24"
+  },
+  {
+    "rule": "R25",
+    "name": "Composition-weighted mean atomic number",
+    "definition": "Mean atomic number / electron count of the compound:** Compute the composition-weighted average atomic number (or total core-electron count) using tabulated Z values for each element. Heavier, more polarizable elements exhibit more diffuse orbitals, weaker directional bonding, and lower cohesive energies per bond, which systematically shifts the formation energy per atom toward less negative values compared to light-element analogs.",
+    "function": "rule_25",
+    "column": "R25"
+  }
+]

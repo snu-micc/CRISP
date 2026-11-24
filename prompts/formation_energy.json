@@ -1,0 +1,133 @@
+{
+  "profile": {
+    "discovery_calls": 1000,
+    "rules_per_call": 10,
+    "keyword_batch_size": 25,
+    "embedding_model": "text-embedding-3-large",
+    "embedding_input": "processed_rule",
+    "pca_dimensions": 128,
+    "clusters": 25,
+    "random_seed": 42,
+    "kmeans_n_init": 50,
+    "kmeans_max_iter": 300,
+    "l2_before_pca": false,
+    "l2_after_pca": false
+  },
+  "requests": {
+    "discovery": {
+      "endpoint": "chat/completions",
+      "body": {
+        "model": "gpt-4.1-mini-2025-04-14",
+        "messages": [
+          {
+            "role": "user",
+            "content": "You are an expert in inorganic chemistry, solid-state thermodynamics, crystal chemistry, and materials informatics. Given any inorganic material with crystal information (CIF files), suggest 10 key structure- or composition-derived features that are important indicators of its DFT formation energy per atom relative to the elemental reference states.\n\nThe proposed indicators must be expressible from the crystal structure, its composition, and fixed tabulated elemental properties. Do not use the material's formation energy, total energy, energy above hull, decomposition energy, database-computed material properties, or predictions from pretrained or surrogate models.\n\nPlease provide the 10 rules in the following format:\n\n1: (reason), 2: (reason), ..., and keep each explanation under 100 words.\n\nDO NOT provide any other information or explanation."
+          }
+        ],
+        "max_tokens": 1200
+      }
+    },
+    "keywords": {
+      "endpoint": "chat/completions",
+      "body": {
+        "model": "gpt-4.1-mini-2025-04-14",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Return faithful chemistry-focused preprocessing in valid JSON."
+          },
+          {
+            "role": "user",
+            "content": "You are an expert in inorganic chemistry, solid-state thermodynamics, crystal chemistry, and materials informatics.\n\nTask: preprocess rule-discovery outputs for semantic clustering.\nFor each input rule, keep only chemical, compositional, structural, crystallographic, bonding, and thermodynamic-mechanism words or short phrases. Remove generic filler,\nformatting language, repeated task labels, and statements that a feature is important or predictive.\nIn particular, omit generic occurrences of: formation energy, total energy, energy above hull, DFT target, prediction, indicator, important.\nPreserve the original scientific mechanism and distinctions such as mean versus variance,\nlocal versus global, composition versus bonded-neighbor, and connectivity versus symmetry.\nDo not add concepts absent from the input rule.\n\nReturn valid JSON only as one object with an `items` array. Include exactly one item per input rule:\n{\n  \"items\": [\n    {\n      \"rule_uid\": \"same id as input\",\n      \"keywords\": [\"keyword or short phrase\", \"...\"],\n      \"processed_rule\": \"compact keyword-focused phrase for embedding\"\n    }\n  ]\n}\n\nINPUT RULES:\n<<rules_json>>"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 5000,
+        "response_format": {
+          "type": "json_object"
+        }
+      }
+    },
+    "curation": {
+      "endpoint": "responses",
+      "body": {
+        "model": "gpt-5",
+        "input": "You are an expert in inorganic chemistry, crystal chemistry, and materials informatics.\n\nThe rules below belong to one semantic cluster from a chemistry-rule discovery workflow for\nDFT formation energy per atom of inorganic crystals. Examine every rule in this cluster and create one representative chemical rule.\n\nRequirements:\n- Capture the shared dominant mechanism of this cluster and do not broaden the rule into unrelated\n  axes that should belong to other clusters.\n- The 25 outputs must form a complementary catalog. Compare this cluster with the global cluster\n  map below and formulate the aspect that most distinguishes it. If nearby clusters concern the\n  same elemental property, use only a distinct operational statistic explicitly supported by this\n  cluster (for example, global composition versus bonded-neighbor, mean versus heterogeneity, or\n  local packing versus unit-cell packing). Do not repeat another cluster's primary scalar under a\n  different title.\n- Preserve meaningful distinctions in the cluster, but give the descriptor one primary operational\n  focus so it does not collapse into a generic combination of many chemical properties.\n- State how the mechanism can be quantified or approximated from a CIF-derived structure,\n  composition, and fixed non-target elemental properties.\n- Do not use a material's formation energy, total energy, energy above hull,\ndecomposition energy, material-specific DFT result, elemental/compound energy table, fitted\nbond-energy table, database-computed property, target label, or surrogate prediction.\n- Do not mention clustering, language models, datasets, labels, or model performance.\n- Keep representative_rule and rationale below 100 words each.\n\nReturn valid JSON only with exactly:\n{\n  \"cluster_id\": \"<<cluster_id>>\",\n  \"representative_rule\": \"one focused representative chemical rule\",\n  \"rationale\": \"why the mechanism is chemically relevant\",\n  \"descriptor_hint\": \"one primary computable scalar focus\",\n  \"merged_concepts\": [\"concept 1\", \"concept 2\"]\n}\n\nCluster ID: <<cluster_id>>\nCluster size: <<cluster_size>>\nCluster top keywords: <<top_keywords>>\n\nGLOBAL MAP OF ALL 25 CLUSTERS (ID, size, top keywords):\n<<global_map>>\n\nRULES IN THIS CLUSTER:\n<<members_json>>",
+        "max_output_tokens": 2500,
+        "store": false,
+        "text": {
+          "format": {
+            "type": "json_schema",
+            "name": "curated_cluster_rule",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "cluster_id",
+                "representative_rule",
+                "rationale",
+                "descriptor_hint",
+                "merged_concepts"
+              ],
+              "properties": {
+                "cluster_id": {
+                  "type": "string"
+                },
+                "representative_rule": {
+                  "type": "string"
+                },
+                "rationale": {
+                  "type": "string"
+                },
+                "descriptor_hint": {
+                  "type": "string"
+                },
+                "merged_concepts": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "codegen": {
+      "endpoint": "responses",
+      "body": {
+        "model": "gpt-4.1",
+        "instructions": "You are an expert in inorganic chemistry, solid-state thermodynamics, crystal chemistry, materials informatics, and computational materials science.",
+        "input": "Based only on the rule content below, write a single Python function that computes a corresponding scalar descriptor from a pymatgen Structure parsed from a CIF file.\n\nRequirements:\n1. The function must take exactly one required argument named `structure`.\n2. It must return one finite Python float. Use 0.0 only as a clearly defined failure fallback.\n3. It must use explicit, auditable calculations from the crystal structure, its composition, and fixed tabulated elemental properties available through standard scientific Python libraries.\n4. It must not access files, networks, environment variables, databases, material identifiers, target measurements, labels, dataset statistics, fitted parameters, or prediction residuals.\n5. It must not call a graph neural network, pretrained property model, surrogate predictor, interatomic potential, or another machine-learning model.\n6. It must not encode chemical-family names or benchmark-specific lookup tables.\n7. Prefer robust, concise logic with bounded neighbor searches and try/except fallbacks. Avoid prohibitively dense grids or supercells.\n8. The function name must be `<<function_name>>`.\n9. You may refer to common modules as `np`, `math`, `nx`, and to pymatgen classes such as `Element`, `SpacegroupAnalyzer`, `CrystalNN`, and `VoronoiNN`; imports will be supplied by the execution harness.\n10. Output only the complete function definition, without Markdown fences, imports, comments, tests, or explanation.\n\nAdditional target-leakage constraints:\n- Do not use or retrieve the material's formation energy, total energy, energy above hull, decomposition energy, phase stability, or any material-specific DFT result.\n- Do not use elemental or compound energy lookup tables, fitted bond-energy tables, or energy-prediction models.\n- The calculation must be available before the target formation-energy calculation is known.\n\nRULE CONTENT:\n<<rule_text>>\nReturn cluster_id \"<<cluster_id>>\" and the complete function definition.",
+        "max_output_tokens": 4000,
+        "store": false,
+        "text": {
+          "format": {
+            "type": "json_schema",
+            "name": "descriptor_function",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "cluster_id",
+                "function_code"
+              ],
+              "properties": {
+                "cluster_id": {
+                  "type": "string"
+                },
+                "function_code": {
+                  "type": "string",
+                  "description": "Exactly one complete Python function definition."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

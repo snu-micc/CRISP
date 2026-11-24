@@ -1,0 +1,42 @@
+{
+  "profile": {
+    "discovery_calls": 1000,
+    "rules_per_call": 10,
+    "embedding_model": "text-embedding-3-large",
+    "embedding_input": "text",
+    "pca_dimensions": 256,
+    "clusters": 50,
+    "random_seed": 42,
+    "kmeans_n_init": 50,
+    "kmeans_max_iter": 1000,
+    "l2_before_pca": true,
+    "l2_after_pca": true
+  },
+  "requests": {
+    "discovery": {
+      "endpoint": "chat/completions",
+      "body": {
+        "model": "gpt-4.1-mini-2025-04-14",
+        "messages": [
+          {
+            "role": "user",
+            "content": "You are an expert in inorganic chemistry. Given any inorganic material with crystal information (CIF files), suggest 10 key features that are important indicators of its synthesizability. Please provide the 10 rules in the following format: 1: (reason), 2: (reason), ..., and must keep each explanation under 100 words. DO NOT provide any other information or explanation."
+          }
+        ]
+      }
+    },
+    "codegen": {
+      "endpoint": "chat/completions",
+      "body": {
+        "model": "gpt-4.1-2025-04-14",
+        "temperature": 0,
+        "messages": [
+          {
+            "role": "user",
+            "content": "You are an expert in inorganic chemistry and computational materials science. Based on the \"Rule content\" and \"Code examples\" provided below, write a single Python function that computes the corresponding property as a feature from a CIF-derived structure. You may choose an appropriate function name based on your chemistry knowledge.\nThe function must:\n[1] Take one argument: a structure object parsed from a CIF file.\n[2] Return a single float value.\n[3] Be executable without errors (e.g., avoid incorrect attributes like pymatgen.core... having no attribute \"EN...\").\n[4] Use any relevant inorganic chemistry libraries such as pymatgen.\n[5] DO not use GNN-based predictor and do not use other surrogate models.\nOutput only the complete function definition. The function doesn't need to be overly complex, but please make an effort to ensure it reflects the specified reason through meaningful chemical properties,\nrather than merely capturing it in an implicit or superficial way. Do not include any additional explanations or comments.\n{Code examples} :\ndef rule_xx_crystallographic_symmetry(structure):\n    try:\n        return float(SpacegroupAnalyzer(structure).get_space_group_number())\n    except:\n        return 0.0\ndef rule_xx_lattice_parameters_avg(structure):\n    a, b, c = structure.lattice.abc\n    alpha, beta, gamma = structure.lattice.angles\n    return np.mean([a, b, c, alpha, beta, gamma])\ndef rule_xx_cation_anion_ratio(structure):\n    comp = structure.composition.get_el_amt_dict()\n    cat = sum(amt for el, amt in comp.items() if Element(el).oxidation_states and max(Element(el).oxidation_states) > 0)\n    an = sum(amt for el, amt in comp.items() if Element(el).oxidation_states and min(Element(el).oxidation_states) < 0)\n    return cat / an if an != 0 else 0.0\ndef rule_xx_bond_valence_deviation(structure):\n    analyzer = BVAnalyzer()\n    try:\n        vs = analyzer.get_valence_structure(structure, reassign=True)\n    except:\n        return 0.0\n    diffs = []\n    for site in vs:\n        if not hasattr(site.specie, \"oxi_state\"):\n            continue\n        try:\n            exp = site.specie.oxi_state\n            bvs = analyzer.get_bv_sum(site, structure)\n            diffs.append(abs(bvs - exp))\n        except:\n            continue\n    return float(np.mean(diffs)) if diffs else 0.0\n{Rule content} : <<rule_text>>"
+          }
+        ]
+      }
+    }
+  }
+}

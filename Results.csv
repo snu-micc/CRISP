@@ -1,0 +1,17 @@
+property,catalog,setting,metric,aggregation,value
+synthesizability,Original CRISP,ID,f1,seed_mean,0.8625701513893088
+synthesizability,Open-weight CRISP,ID,f1,seed_mean,0.852448661884618
+formation_energy,Original CRISP,ID,mae,seed_mean,0.12954459730759033
+formation_energy,Open-weight CRISP,ID,mae,seed_mean,0.1277722691228011
+synthesizability,Original CRISP,ID,observed_roc_auc,seed_mean,0.968720590710095
+synthesizability,Open-weight CRISP,ID,observed_roc_auc,seed_mean,0.9693892395735291
+synthesizability,Original CRISP,family_OOD,f1,family_macro,0.5371673786015309
+synthesizability,Open-weight CRISP,family_OOD,f1,family_macro,0.5517056823249922
+synthesizability,Original CRISP,size_OOD,f1,seed_mean,0.4199929227161183
+synthesizability,Open-weight CRISP,size_OOD,f1,seed_mean,0.42058003808639305
+formation_energy,Original CRISP,family_OOD,r2,family_macro,0.5641809421754836
+formation_energy,Open-weight CRISP,family_OOD,r2,family_macro,0.5294052437223155
+ionic_conductivity,Original CRISP,external,mae,single_fit,1.170439569248538
+ionic_conductivity,Original CRISP,external,r2,single_fit,0.4756587711638925
+ionic_conductivity,Original CRISP,id,mae,single_fit,1.2285104970199552
+ionic_conductivity,Original CRISP,id,r2,single_fit,0.5697216997770376

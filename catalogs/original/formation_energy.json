@@ -1,0 +1,202 @@
+[
+  {
+    "rule": "R01",
+    "name": "Atomic packing fraction",
+    "definition": "Sum of the atomic-sphere volumes calculated from tabulated atomic radii, divided by unit-cell volume.",
+    "function": "rule_01_crystals_a_high_global_unit",
+    "column": "R01",
+    "rule_text": "Crystals with a high global unit-cell atomic packing fraction—sum of element hard‑sphere volumes (from fixed tabulated radii) divided by the CIF unit-cell volume—tend to have lower formation energy per atom by minimizing voids and undercoordination, thus stabilizing bonding networks."
+  },
+  {
+    "rule": "R02",
+    "name": "Charge-neutral oxidation-state magnitude",
+    "definition": "Largest stoichiometry-weighted mean absolute oxidation state among charge-neutral assignments of common elemental valences.",
+    "function": "rule_02_assign_common_oxidation_states_to",
+    "column": "R02",
+    "rule_text": "Assign common oxidation states to each element so the formula is charge neutral (use composition and, if available, CIF-guided coordination/bond-valence cues). Compute the composition-weighted mean absolute formal oxidation state. Compounds that admit a neutral assignment with larger mean |z| are typically more stabilized by ionic (Madelung) interactions; if neutrality cannot be satisfied with common states, the material is prone to higher energy due to charge imbalance/redox frustration."
+  },
+  {
+    "rule": "R03",
+    "name": "Relative radius dispersion",
+    "definition": "Composition-weighted standard deviation of elemental radii divided by their weighted mean; ionic radii are used when available.",
+    "function": "rule_03_minimize_composition_weighted_dispersion_of",
+    "column": "R03",
+    "rule_text": "Minimize composition-weighted dispersion of constituent radii: a high coefficient of variation of atomic/ionic radii (std/mean across elements, occupancy-weighted) signals elastic misfit; structures with lower radius polydispersity tend to have lower formation energy per atom."
+  },
+  {
+    "rule": "R04",
+    "name": "Metal fraction",
+    "definition": "Fraction of atoms assigned to metallic elements.",
+    "function": "rule_04_use_atomic_fraction_of_metallic",
+    "column": "R04",
+    "rule_text": "Use the atomic fraction of metallic elements in the composition (f_metal) from the CIF stoichiometry. Intermediate f_metal (~0.3–0.8) indicates substantial metal–nonmetal pairing, favoring heteropolar ionic/covalent bonds and typically more exothermic formation energies; very high or very low f_metal implies predominantly metallic or homopolar networks with a weaker compound-forming drive."
+  },
+  {
+    "rule": "R05",
+    "name": "First ionization energy",
+    "definition": "Atomic-fraction-weighted mean of the tabulated first ionization energies.",
+    "function": "rule_05_use_composition_weighted_mean_first",
+    "column": "R05",
+    "rule_text": "Use the composition-weighted mean first ionization energy of the constituent elements to gauge charge-transfer capacity: lower averages enable easier cation formation and more ionic bonding; higher averages resist electron removal and bias toward more covalent bonding."
+  },
+  {
+    "rule": "R06",
+    "name": "Coordination-number variance",
+    "definition": "Multiplicity-weighted variance of Voronoi neighbor counts across symmetry-distinct sites.",
+    "function": "rule_06_use_multiplicity_weighted_variance_of",
+    "column": "R06",
+    "rule_text": "Use the multiplicity-weighted variance of per-site coordination numbers (CN) computed from a CIF (neighbors via Voronoi or element-radius cutoffs). Structures with low CN variance—i.e., uniform coordination—tend to be lower in formation energy, whereas high variance, especially with many undercoordinated sites, signals unsaturated/strained bonds and higher energy."
+  },
+  {
+    "rule": "R07",
+    "name": "Mean site radius",
+    "definition": "Occupancy-weighted mean of available site-species radii, using ionic radii or a covalent-radius fallback.",
+    "function": "rule_07_use_site_occupancy_weighted_mean",
+    "column": "R07",
+    "rule_text": "Use the site-occupancy-weighted mean atomic radius as the primary size scale: compositions whose mean radius allows dense, strain-minimized coordination in the given structure tend to be more stable. Compute r_mean = Σ(occ_i·r_i)/Σ(occ_i) from CIF species and site occupancies using fixed elemental covalent radii; where oxidation/coordination are clear, substitute Shannon ionic radii for those sites."
+  },
+  {
+    "rule": "R08",
+    "name": "Local electronegativity contrast",
+    "definition": "Sum of Voronoi-weighted absolute electronegativity differences between neighboring sites, divided by the number of sites.",
+    "function": "rule_08_high_coordination_weighted_mean_electronegativity",
+    "column": "R08",
+    "rule_text": "High coordination-weighted mean electronegativity difference (Pauling) across nearest-neighbor bonds favors ionic character and typically yields more exothermic formation energies. From a CIF, construct the bond network (e.g., Voronoi or distance cutoff), compute |χi−χj| for each bond, weight by bond multiplicity per atom, and average per atom."
+  },
+  {
+    "rule": "R09",
+    "name": "Mean coordination number",
+    "definition": "Multiplicity-weighted mean of site coordination numbers obtained from Voronoi neighbors.",
+    "function": "rule_09_multiplicity_weighted_mean_coordination_number",
+    "column": "R09",
+    "rule_text": "Multiplicity-weighted mean coordination number (CN_avg) of all atomic sites: higher CN_avg generally stabilizes a crystal via greater bond saturation. Obtain CN_avg from a CIF by constructing a chemically sensible neighbor graph (e.g., Voronoi or distance cutoff using elemental radii), counting neighbors per site, and averaging by site multiplicity."
+  },
+  {
+    "rule": "R10",
+    "name": "Relative bond-length mismatch",
+    "definition": "Mean absolute difference between a neighbor distance and the sum of the two atomic or ionic radii, divided by that radius sum.",
+    "function": "rule_10_structures_a_low_mean_absolute",
+    "column": "R10",
+    "rule_text": "Structures with a low mean absolute normalized bond-length misfit (|d_ij − (r_i+r_j)|/(r_i+r_j), averaged over first-shell neighbor pairs) tend to have lower formation energy per atom. Obtain neighbors from the CIF, take expected distances from tabulated radii (Shannon ionic if oxidation states assigned, else covalent), and average this fractional deviation; larger values indicate local bond strain and destabilization."
+  },
+  {
+    "rule": "R11",
+    "name": "Mean valence-electron count",
+    "definition": "Composition-weighted mean of elemental valence-electron counts estimated from electronic configurations or periodic groups.",
+    "function": "rule_11_composition_weighted_mean_valence_electrons",
+    "column": "R11",
+    "rule_text": "Composition-weighted mean valence electrons per atom (VEC) controls band filling; phases are favored when VEC fills bonding states but avoids significant antibonding occupation, setting the bonding capacity and metallic/covalent character for the composition."
+  },
+  {
+    "rule": "R12",
+    "name": "Special-position fraction",
+    "definition": "Fraction of sites flagged from their Wyckoff multiplicity or site-symmetry symbol.",
+    "function": "rule_12_materials_a_higher_fraction_of",
+    "column": "R12",
+    "rule_text": "Materials with a higher fraction of atoms occupying special Wyckoff positions (site symmetry > 1 or multiplicity lower than the general position) tend to have lower formation energy per atom. Quantify by symmetrizing the CIF, assigning Wyckoff letters/site symmetries, and computing f_special = (atoms on special positions)/(total atoms)."
+  },
+  {
+    "rule": "R13",
+    "name": "Electronegativity dispersion",
+    "definition": "Composition-weighted standard deviation of elemental Pauling electronegativities.",
+    "function": "rule_13_at_fixed_composition_a_larger",
+    "column": "R13",
+    "rule_text": "At fixed composition, a larger composition-weighted standard deviation of elemental Pauling electronegativities (sigma_chi) promotes heteropolar charge transfer and Madelung stabilization; for similar mean electronegativity, higher sigma_chi more often yields stable ionic or mixed ionic–covalent networks."
+  },
+  {
+    "rule": "R14",
+    "name": "Mean electronegativity",
+    "definition": "Composition-weighted mean of elemental Pauling electronegativities.",
+    "function": "rule_14_compounds_a_composition_weighted_mean",
+    "column": "R14",
+    "rule_text": "Compounds with a composition-weighted mean Pauling electronegativity in a moderate range (about 1.6–2.2) tend to achieve lower formation energies by balancing ionic and covalent bonding; too low favors metallic bonding, too high overpolarizes bonds."
+  },
+  {
+    "rule": "R15",
+    "name": "Mean atomic number",
+    "definition": "Atomic-fraction-weighted mean atomic number.",
+    "function": "rule_15_use_composition_weighted_mean_atomic",
+    "column": "R15",
+    "rule_text": "Use the composition-weighted mean atomic number, Z̄ = Σ_i x_i Z_i (x_i from CIF stoichiometry/site occupancies), as a proxy for average nuclear charge. Larger or smaller Z̄ shifts screening and valence orbital energies, altering typical bond strengths and cohesion, which in turn trends with formation energy per atom."
+  },
+  {
+    "rule": "R16",
+    "name": "Pairwise electronegativity contrast",
+    "definition": "Mean absolute electronegativity difference over pairs weighted by elemental atomic fractions; both pair orders are counted.",
+    "function": "rule_16_use_composition_weighted_mean_pairwise",
+    "column": "R16",
+    "rule_text": "Use the composition-weighted mean pairwise electronegativity gap among constituent elements: Δχ_pair = 2 * Σ_{i<j} x_i x_j |χ_i − χ_j|, where x_i are atomic fractions from CIF site multiplicities/occupancies and χ_i are tabulated Pauling electronegativities. Larger Δχ_pair indicates stronger average charge transfer/ionic character and typically more exothermic formation energies."
+  },
+  {
+    "rule": "R17",
+    "name": "Site-mixing entropy",
+    "definition": "Multiplicity-weighted mean mixing entropy of elemental occupancies on symmetry-equivalent sites, using natural logarithms.",
+    "function": "rule_17_compositional_configurational_entropy_stabilizes_multicomponent",
+    "column": "R17",
+    "rule_text": "Compositional configurational entropy stabilizes multicomponent crystals: higher ideal-mixing entropy per atom S_conf/k_B = -∑ x_i ln x_i (from elemental fractions in the CIF formula) generally lowers formation energy. If CIF site occupancies indicate mixing on symmetry-distinct sublattices, compute sublattice entropies and weight by site multiplicities to refine the estimate; excessive partitioning over many unique sites can introduce enthalpic penalties that offset the entropic gain."
+  },
+  {
+    "rule": "R18",
+    "name": "Mean elemental cohesive energy",
+    "definition": "Composition-weighted mean of tabulated elemental cohesive energies; no crystalline compound energy is used.",
+    "function": "rule_18_use_composition_weighted_mean_of",
+    "column": "R18",
+    "rule_text": "Use the composition-weighted mean of the pure-element cohesive energies as a baseline bonding-energy scale: compounds whose constituents have larger mean elemental cohesive energy tend to form intrinsically stronger bonding networks and greater thermodynamic stability, all else equal."
+  },
+  {
+    "rule": "R19",
+    "name": "Pairwise atomic-number contrast",
+    "definition": "Sum of absolute atomic-number differences over distinct unordered elemental pairs, weighted by the product of their atomic fractions.",
+    "function": "rule_19_larger_composition_weighted_pairwise_atomic",
+    "column": "R19",
+    "rule_text": "Larger composition-weighted pairwise atomic-number contrast among constituent elements (mean ΔZ = sum_{i<j} x_i x_j |Z_i - Z_j|) tends to increase the magnitude of formation energy per atom by promoting heteronuclear/ionic bonding and diverse bond strengths; small ΔZ resembles alloy-like bonding with smaller magnitudes."
+  },
+  {
+    "rule": "R20",
+    "name": "Volume per site",
+    "definition": "Unit-cell volume divided by the number of crystallographic sites.",
+    "function": "rule_20_quantify_geometric_volume_per_atom",
+    "column": "R20",
+    "rule_text": "Quantify the geometric volume per atom from the CIF as V_atom = V_cell/N_atoms. Smaller V_atom—or contraction relative to composition-weighted elemental atomic volumes—implies shorter interatomic distances, greater orbital overlap, and typically more exothermic formation. Larger V_atom (expansion) indicates weaker bonding and higher energies. Extremes (strong compression or expansion) introduce strain penalties and reduce stability."
+  },
+  {
+    "rule": "R21",
+    "name": "Mean elemental melting point",
+    "definition": "Atomic-fraction-weighted mean of elemental melting points.",
+    "function": "rule_21_use_composition_weighted_mean_elemental",
+    "column": "R21",
+    "rule_text": "Use the composition-weighted mean elemental melting point of the constituents as a bond-strength baseline: compounds built from elements with higher average Tm tend to form stronger heteronuclear bonds and achieve deeper thermodynamic stabilization per atom."
+  },
+  {
+    "rule": "R22",
+    "name": "Ionic-like bond fraction",
+    "definition": "Fraction of neighbor-bond weight contributed by bonds with an absolute Pauling electronegativity difference of at least 1.7.",
+    "function": "rule_22_a_higher_bond_count_weighted",
+    "column": "R22",
+    "rule_text": "A higher bond-count-weighted fraction of first-neighbor pairs with Pauling electronegativity difference ≥ ~1.7 (ionic-like) stabilizes the crystal via stronger Coulombic lattice contributions; predominantly covalent-like networks (below this threshold) provide less such stabilization. Quantify from a CIF by building the first-shell neighbor graph (e.g., covalent-radii cutoff) and thresholding Δχ for each bonded pair."
+  },
+  {
+    "rule": "R23",
+    "name": "Atomic-mass dispersion",
+    "definition": "Standard deviation of site-averaged atomic masses, weighted by site occupancy.",
+    "function": "rule_23_compounds_smaller_composition_site_occupancy",
+    "column": "R23",
+    "rule_text": "Compounds with smaller composition- and site-occupancy–weighted standard deviation of atomic masses (σ_m) across occupied sites tend to have lower formation energy per atom than mass-contrast mixtures. Mass-homogeneous lattices support more coherent phonon spectra with lower zero-point energy and reduced dynamical frustration than those with large mass disparity."
+  },
+  {
+    "rule": "R24",
+    "name": "d- and f-block fraction",
+    "definition": "Fraction of atoms assigned to d- or f-block elements by the implemented period, group and atomic-number criteria.",
+    "function": "rule_24_a_higher_atomic_fraction_of",
+    "column": "R24",
+    "rule_text": "A higher atomic fraction of d- or f-block elements—especially open‑shell transition/lanthanide/actinide species—tends to stabilize crystals via directional d/f–p hybridization and ligand‑field effects that strengthen and adapt local bonding networks."
+  },
+  {
+    "rule": "R25",
+    "name": "Mean Mendeleev number",
+    "definition": "Composition-weighted mean of tabulated elemental Mendeleev numbers.",
+    "function": "rule_25_use_composition_weighted_mean_mendeleev",
+    "column": "R25",
+    "rule_text": "Use the composition-weighted mean Mendeleev (Pettifor) number, M_av = Σ_i x_i MN_i, as a global chemical-ordering descriptor: compounds with M_av in the mid-scale (early transition metals through metalloids) tend to form stronger, more cohesive bonding networks than compositions at very low or very high M_av. Compute M_av from CIF stoichiometry and tabulated elemental MN values."
+  }
+]
